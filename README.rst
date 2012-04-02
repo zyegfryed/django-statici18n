@@ -22,7 +22,7 @@ That's what ``statici18n`` is for:
 The main website for django-staticfiles is
 `github.com/zyegfryed/django-statici18n`_ where you can also file tickets.
 
-.. javascript_catalog view: http://docs.djangoproject.com/en/1.4/topics/i18n/translation/#module-django.views.i18n
+.. _javascript_catalog view: http://docs.djangoproject.com/en/1.4/topics/i18n/translation/#module-django.views.i18n
 
 Installation
 ------------
