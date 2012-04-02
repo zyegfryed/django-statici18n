@@ -1,0 +1,15 @@
+Changelog
+=========
+
+0.2.0 (2012 Apr 02)
+-------------------
+
+**Backwards-incompatible changes**
+
+* Renamed collecti18n command to compilejsi18n.
+* Now use current static directory instead of STATIC_ROOT for sane defaults.
+
+0.1.0 (2012 Apr 02)
+-------------------
+
+* Initial commit.

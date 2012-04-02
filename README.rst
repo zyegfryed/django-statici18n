@@ -32,19 +32,27 @@ Installation
 
     pip install django-statici18n
 
-- Added ``'statici18n'`` to your ``INSTALLED_APPS`` setting::
+- Add ``'statici18n'`` to your ``INSTALLED_APPS`` setting::
 
     INSTALLED_APPS = [
         # ...
         'statici18n',
     ]
 
+- Add the ``django.core.context_processors.i18n`` context processor to your
+  TEMPLATE_CONTEXT_PROCESSORS setting -- already set by Django by default::
+
+    TEMPLATE_CONTEXT_PROCESSORS = (
+      # ...
+      'django.core.context_processors.i18n',
+    )
+
 - Once you have translated and compiled your messages, use the ``collecti18n``
   management command::
 
-    python manage.py collecti18n
+    python manage.py compilejsi18n
 
-By default, the generated catalogs are stored to ``STATIC_ROOT``.
+By default, the generated catalogs are stored to static/jsi18n.
 
 - Edit your templates and replace the dynamically generated script by the
   statically generated script like this::
@@ -53,7 +61,3 @@ By default, the generated catalogs are stored to ``STATIC_ROOT``.
 
 .. _github.com/zyegfryed/django-statici18n: http://github.com/zyegfryed/django-statici18n
 .. _PyPI: http://pypi.python.org/pypi/django-statici18n
-.. _Apache: http://httpd.apache.org/
-.. _Lighttpd: http://www.lighttpd.net/
-.. _Nginx: http://wiki.nginx.org/
-.. _Cherokee: http://www.cherokee-project.com/
