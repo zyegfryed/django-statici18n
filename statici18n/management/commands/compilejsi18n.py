@@ -129,7 +129,7 @@ class Command(NoArgsCommand):
             "'django.conf'."),
         make_option('-o', '--output', dest='outputdir', metavar='OUTPUT_DIR',
             help="Output directory to store generated catalogs. Defaults to "
-            "<STATIC_ROOT>/jsi18n.")
+            "static/jsi18n.")
     )
     help = "Collect Javascript catalog files in a single location."
 
@@ -146,7 +146,7 @@ class Command(NoArgsCommand):
             languages = [to_locale(lang_code) for (lang_code, lang_name) in settings.LANGUAGES]
 
         if outputdir is None:
-            outputdir = os.path.join(settings.STATIC_ROOT, 'jsi18n')
+            outputdir = os.path.join('static', 'jsi18n')
 
         for locale in languages:
             if verbosity > 0:
