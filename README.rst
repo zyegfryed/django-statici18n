@@ -42,7 +42,7 @@ Installation
 - Once you have translated and compiled your messages, use the ``collecti18n``
   management command::
 
-    python manage.py collecti18n
+    python manage.py compilejsi18n
 
 By default, the generated catalogs are stored to ``STATIC_ROOT``.
 
@@ -53,7 +53,3 @@ By default, the generated catalogs are stored to ``STATIC_ROOT``.
 
 .. _github.com/zyegfryed/django-statici18n: http://github.com/zyegfryed/django-statici18n
 .. _PyPI: http://pypi.python.org/pypi/django-statici18n
-.. _Apache: http://httpd.apache.org/
-.. _Lighttpd: http://www.lighttpd.net/
-.. _Nginx: http://wiki.nginx.org/
-.. _Cherokee: http://www.cherokee-project.com/
