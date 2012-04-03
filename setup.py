@@ -133,4 +133,7 @@ setup(
         "Framework :: Django",
     ],
     zip_safe=False,
+    install_requires=[
+        'django-appconf>=0.4',
+    ],
 )

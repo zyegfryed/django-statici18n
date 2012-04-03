@@ -5,21 +5,19 @@ import gettext as gettext_module
 from optparse import make_option
 
 from django.core.management.base import NoArgsCommand
-from django.conf import settings
 from django.utils import importlib
 from django.utils.translation import to_locale
 from django.utils.text import javascript_quote
 from django.views.i18n import (LibHead, LibFoot, LibFormatHead, LibFormatFoot,
                                SimplePlural, InterPolate, PluralIdx, get_formats)
 
+from statici18n.conf import settings
+from statici18n.utils import get_filename
+
 
 # This function is a ripoff of `django.views.i18n.javascript_catalog with
 # all the request specific code removed.
-def javascript_catalog(locale, domain, packages=None):
-    if packages is None:
-        packages = ['django.conf']
-    if isinstance(packages, basestring):
-        packages = packages.split('+')
+def javascript_catalog(locale, domain, packages):
     packages = [p for p in packages if p == 'django.conf' or p in settings.INSTALLED_APPS]
     default_locale = to_locale(settings.LANGUAGE_CODE)
     t = {}
@@ -120,13 +118,12 @@ class Command(NoArgsCommand):
             help='The locale to process. Default is to process all.'
         ),
         make_option('-d', '--domain',
-            dest='domain', default='djangojs',
+            dest='domain', default=settings.STATICI18N_DOMAIN,
             help="Override the gettext domain. By default, the command uses "
             "the djangojs gettext domain."),
-        make_option('-p', '--packages', action='append', default=[],
-            dest='packages', metavar='PACKAGE',
+        make_option('-p', '--packages', action='append', default=[], dest='packages',
             help="A list of packages to check for translations. Default is "
-            "'django.conf'."),
+            "'django.conf'. Use multiple times to add more."),
         make_option('-o', '--output', dest='outputdir', metavar='OUTPUT_DIR',
             help="Output directory to store generated catalogs. Defaults to "
             "static/jsi18n.")
@@ -136,7 +133,7 @@ class Command(NoArgsCommand):
     def handle_noargs(self, **options):
         locale = options.get('locale')
         domain = options['domain']
-        packages = options['packages'] or None
+        packages = options['packages'] or settings.STATICI18N_PACKAGES
         outputdir = options['outputdir']
         verbosity = int(options.get('verbosity'))
 
@@ -146,17 +143,17 @@ class Command(NoArgsCommand):
             languages = [to_locale(lang_code) for (lang_code, lang_name) in settings.LANGUAGES]
 
         if outputdir is None:
-            outputdir = os.path.join('static', 'jsi18n')
+            outputdir = os.path.join(settings.STATICI18N_ROOT, settings.STATICI18N_OUTPUT_DIR)
 
         for locale in languages:
             if verbosity > 0:
                 print "processing language", locale
 
-            basedir = os.path.join(outputdir, locale)
+            jsfile = os.path.join(outputdir, get_filename(locale, domain))
+            basedir = os.path.dirname(jsfile)
             if not os.path.isdir(basedir):
                 os.makedirs(basedir)
 
             src = javascript_catalog(locale, domain, packages)
-            jsfile = os.path.join(basedir, '%s.js' % domain)
             with open(jsfile, 'w') as f:
                 f.write(src)
