@@ -121,10 +121,9 @@ class Command(NoArgsCommand):
             dest='domain', default=settings.STATICI18N_DOMAIN,
             help="Override the gettext domain. By default, the command uses "
             "the djangojs gettext domain."),
-        make_option('-p', '--packages', action='append', default=[],
-            dest='packages', metavar='PACKAGE',
+        make_option('-p', '--packages', action='append', default=[], dest='packages',
             help="A list of packages to check for translations. Default is "
-            "'django.conf'."),
+            "'django.conf'. Use multiple times to add more."),
         make_option('-o', '--output', dest='outputdir', metavar='OUTPUT_DIR',
             help="Output directory to store generated catalogs. Defaults to "
             "static/jsi18n.")
