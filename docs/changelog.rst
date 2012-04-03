@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v0.3.1 (2012 Apr 03)
+--------------------
+
+* Added license
+
+* Fixed installation error due to missing manifests file.
+
+
 v0.3.0 (2012 Apr 03)
 --------------------
 
