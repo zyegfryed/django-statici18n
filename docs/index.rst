@@ -7,5 +7,6 @@ Contents
    :maxdepth: 2
 
    commands
+   helpers
    settings
    changelog
