@@ -14,6 +14,8 @@ from django.views.i18n import (LibHead, LibFoot, LibFormatHead, LibFormatFoot,
 from statici18n.conf import settings
 from statici18n.utils import get_filename
 
+LibFoot = LibFoot.replace('\x04', '\\x04')
+
 
 # This function is a ripoff of `django.views.i18n.javascript_catalog with
 # all the request specific code removed.
