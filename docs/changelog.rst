@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v0.4.1 (2012 Oct 17)
+--------------------
+
+* Worked around an issue with unescaped string literals in Django JavaScript
+  i18n code. Thanks @jezdez.
+
 v0.4.0 (2012 Apr 04)
 --------------------
 
