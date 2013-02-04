@@ -6,7 +6,7 @@ from optparse import make_option
 
 from django.core.management.base import NoArgsCommand
 from django.utils import importlib
-from django.utils.translation import to_locale
+from django.utils.translation import to_locale, activate
 from django.utils.text import javascript_quote
 from django.views.i18n import (LibHead, LibFoot, LibFormatHead, LibFormatFoot,
                                SimplePlural, InterPolate, PluralIdx, get_formats)
@@ -151,6 +151,7 @@ class Command(NoArgsCommand):
             if verbosity > 0:
                 print "processing language", locale
 
+            activate(locale)
             jsfile = os.path.join(outputdir, get_filename(locale, domain))
             basedir = os.path.dirname(jsfile)
             if not os.path.isdir(basedir):
