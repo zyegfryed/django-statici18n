@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.4.2 (2013 Feb 04)
+--------------------
+
+* Fixing compiling the JS formats for non-default languages. Thanks @jezdez.
+
 v0.4.1 (2012 Oct 17)
 --------------------
 
