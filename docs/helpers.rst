@@ -32,6 +32,6 @@ STATICI18N_OUTPUT_DIR and STATICI18N_FILENAME_FUNCTION settings::
 This is especially useful when using a non-local storage backend to `deploy
 files to a CDN`_ or when using `cache busting`_ to serve files.
 
-.. _`static template tag`: https://docs.djangoproject.com/en/1.4/ref/contrib/staticfiles/#static
+.. _`static template tag`: https://docs.djangoproject.com/en/1.5/ref/contrib/staticfiles/#static
 .. _`deploy files to a CDN`: https://docs.djangoproject.com/en/dev/howto/static-files/#serving-static-files-from-a-cloud-service-or-cdn
 .. _`cache busting`: http://django-staticfiles.readthedocs.org/en/latest/helpers/#cachedstaticfilesstorage

@@ -23,7 +23,7 @@ That's what ``statici18n`` is for:
 The main website for django-staticfiles is
 `github.com/zyegfryed/django-statici18n`_ where you can also file tickets.
 
-.. _javascript_catalog view: http://docs.djangoproject.com/en/1.4/topics/i18n/translation/#module-django.views.i18n
+.. _javascript_catalog view: http://docs.djangoproject.com/en/1.5/topics/i18n/translation/#module-django.views.i18n
 
 Installation
 ------------
@@ -72,5 +72,5 @@ or ``django-staticfiles``.
 
 .. _github.com/zyegfryed/django-statici18n: http://github.com/zyegfryed/django-statici18n
 .. _PyPI: http://pypi.python.org/pypi/django-statici18n
-.. _translated: http://docs.djangoproject.com/en/1.4/topics/i18n/translation/#message-files
-.. _compiled: http://docs.djangoproject.com/en/1.4/topics/i18n/translation/#compiling-message-files
+.. _translated: http://docs.djangoproject.com/en/1.5/topics/i18n/translation/#message-files
+.. _compiled: http://docs.djangoproject.com/en/1.5/topics/i18n/translation/#compiling-message-files
