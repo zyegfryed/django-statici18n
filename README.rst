@@ -50,11 +50,11 @@ By default, the generated catalogs are stored to ``static/jsi18n``.
 (Optionnal)
 
 The following steps assumes you're using either ``django.contrib.staticfiles``
-or ``django-statcifles``.
+or ``django-staticfiles``.
 
 .. note::
 
-  Although the usage of ``django.contrib.staticfiles`` or ``django-statcifles``
+  Although the usage of ``django.contrib.staticfiles`` or ``django-staticfiles``
   is not required, django-statici18n really shines when used with those apps.
 
 - Add the ``django.core.context_processors.i18n`` context processor to your
