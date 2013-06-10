@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v0.4.3 (2013 Jun 10)
+--------------------
+
+* Updated documentation reference to Django 1.5.
+* Fixed a typo in documentation.
+
 v0.4.2 (2013 Feb 04)
 --------------------
 
