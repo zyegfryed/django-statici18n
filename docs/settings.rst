@@ -9,11 +9,11 @@ Settings
 
     The gettext domain to use when generating static files.
 
-    Can be overrided with the -d/--domain option of ``compilejsi18n` command.
+    Can be overrided with the ``-d/--domain`` option of ``compilejsi18n`` command.
 
-    Usually you don't want to do that, as JavaScript messages
-    go to the djangojs domain. But this might be needed if you
-    deliver your JavaScript source from Django templates.
+    Usually you don't want to do that, as JavaScript messages go to the
+    ``djangojs`` domain. But this might be needed if you deliver your JavaScript
+    source from Django templates.
 
 .. attribute:: STATICI18N_PACKAGES
 
@@ -21,10 +21,10 @@ Settings
 
     A list of packages to check for translations.
 
-    Can be overrided with the -p/--package option of ``compilejsi18n`` command.
+    Can be overrided with the ``-p/--package`` option of ``compilejsi18n`` command.
 
     Each string in packages should be in Python dotted-package syntax (the
-    same format as the strings in INSTALLED_APPS) and should refer to a
+    same format as the strings in ``INSTALLED_APPS``) and should refer to a
     package that contains a locale directory. If you specify multiple
     packages, all those catalogs are merged into one catalog. This is useful
     if you have JavaScript that uses strings from different applications.
@@ -36,18 +36,24 @@ Settings
     Controls the file path that static files will be written into.
 
     By default, the file path is relative to the current directory you're
-    calling the compilejsi8n command. Thus, it will generally be the static
-    directory of your project, and the same one you're delaing with
-    django.contrib.staticfiles.
+    calling the ``compilejsi8n`` command. Thus, it will generally be the static
+    directory of your project and the same one you're using with
+    ``django.contrib.staticfiles``.
 
+.. warning::
+
+    When using ``django.contrib.staticfiles`` or ``django-staticfiles`` in
+    conjunction with ``django-statici18n``, the best practice is to set
+    ``STATICI18N_ROOT`` to ``STATIC_ROOT`` in your settings file to avoid any
+    surprise during deployment. This is not done in the application by default
+    to keep it simple and loosely-coupled.
 
 .. attribute:: STATICI18N_OUTPUT_DIR
 
     :Default: ``'jsi18n'``
 
-    Controls the directory inside STATICI18N_ROOT that generated files will
-    be written to.
-
+    Controls the directory inside ``STATICI18N_ROOT`` that generated files will
+    be written into.
 
 .. attribute:: STATICI18N_FILENAME_FUNCTION
 
@@ -62,13 +68,10 @@ Settings
     * ``domain``: a string representation of the gettext domain used to check
       for translations
 
-    By default, the function returns the path ``<locale>/<domain>.js``.
+    By default, the function returns the path ``'<locale>/<domain>.js'``.
 
-    The final filename is obtained by joining STATICI18N_ROOT,
-    STATICI18N_OUTPUT_DIR and STATICI18N_FILENAME_FUNCTION.
+    The final filename is resulted by joining ``STATICI18N_ROOT``,
+    ``STATICI18N_OUTPUT_DIR`` and ``STATICI18N_FILENAME_FUNCTION``.
 
-    For example, with default settings in place, the Javascript catalog
-    generated for the ``en`` locale is the following:
-    ``static/jsi18n/en/djangojs.js``
-
-    Missing directories will be created when missing.
+    For example, with default settings in place, the JavaScript catalog
+    generated for the ``en`` locale is: ``'static/jsi18n/en/djangojs.js'``
