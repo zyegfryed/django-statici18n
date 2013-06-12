@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v0.4.4 (2013 Jun 12)
+--------------------
+
+* Fixed issue in  filename function now using language code instead of
+  locale name. Thanks Marc Kirkwood.
+* Fixed Django documentation URLs to use 1.5 release.
+* Improved the overall documentation.
+
 v0.4.3 (2013 Jun 10)
 --------------------
 
