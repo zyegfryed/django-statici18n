@@ -23,7 +23,7 @@ That's what ``django-statici18n`` is for:
 The main website for ``django-statici18n`` is
 `github.com/zyegfryed/django-statici18n`_ where you can also file tickets.
 
-.. _javascript_catalog view: http://docs.djangoproject.com/en/latest/topics/i18n/translation/#module-django.views.i18n
+.. _javascript_catalog view: http://docs.djangoproject.com/en/1.5/topics/i18n/translation/#module-django.views.i18n
 .. _github.com/zyegfryed/django-statici18n: https://github.com/zyegfryed/django-statici18n
 
 Installation
@@ -77,5 +77,5 @@ or ``django-staticfiles``.
     <script src="{% statici18n LANGUAGE_CODE %}"></script>
 
 .. _PyPI: http://pypi.python.org/pypi/django-statici18n
-.. _translated: http://docs.djangoproject.com/en/latest/topics/i18n/translation/#message-files
-.. _compiled: http://docs.djangoproject.com/en/latest/topics/i18n/translation/#compiling-message-files
+.. _translated: http://docs.djangoproject.com/en/1.5/topics/i18n/translation/#message-files
+.. _compiled: http://docs.djangoproject.com/en/1.5/topics/i18n/translation/#compiling-message-files
