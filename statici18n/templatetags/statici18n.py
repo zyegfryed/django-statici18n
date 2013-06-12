@@ -23,5 +23,5 @@ def statici18n(locale):
     template tag.
     """
     path = os.path.join(settings.STATICI18N_OUTPUT_DIR,
-        get_filename(locale, settings.STATICI18N_DOMAIN))
+                        get_filename(locale, settings.STATICI18N_DOMAIN))
     return static(path)
