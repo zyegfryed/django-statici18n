@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.4.5 (2013 Jun 13)
+--------------------
+
+* Fixed ImportError exception.
+
 v0.4.4 (2013 Jun 12)
 --------------------
 
