@@ -33,5 +33,5 @@ def get_filename(*args, **kwargs):
 
 
 def default_filename(locale, domain):
-    from django.utils.translation import to_language
+    from django.utils.translation.trans_real import to_language
     return os.path.join(to_language(locale), '%s.js' % domain)
