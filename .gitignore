@@ -8,6 +8,8 @@
 .pydevproject
 .DS_Store
 MANIFEST
+lib
+include
 dist
 build
 dev.db
