@@ -2,7 +2,7 @@ import os
 import gettext as gettext_module
 
 from django.conf import settings
-from django.utils import importlib
+from django.utils import importlib, six
 from django.utils.text import javascript_quote
 from django.utils.translation import to_locale
 
@@ -108,7 +108,7 @@ except ImportError:
         for k, v in t.items():
             if k == '':
                 continue
-            if isinstance(k, basestring):
+            if isinstance(k, six.string_types):
                 csrc.append("catalog['%s'] = '%s';\n" %
                             (javascript_quote(k), javascript_quote(v)))
             elif isinstance(k, tuple):
