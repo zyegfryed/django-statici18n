@@ -26,7 +26,7 @@ def get_filename(*args, **kwargs):
             mod_name, func_name = get_mod_func(
                 settings.STATICI18N_FILENAME_FUNCTION)
             _filename_func = getattr(import_module(mod_name), func_name)
-        except (AttributeError, ImportError), e:
+        except (AttributeError, ImportError) as e:
             raise ImportError("Couldn't import filename function %s: %s" %
                               (settings.STATICI18N_FILENAME_FUNCTION, e))
     return _filename_func(*args, **kwargs)
