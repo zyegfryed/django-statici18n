@@ -1,19 +1,23 @@
 from setuptools import setup, find_packages
 
-with open('README.rst') as readme:
-    long_description = readme.read()
-
 setup(
     name="django-statici18n",
-    version=__import__('statici18n').__version__,
-    description="A Django app that provides helper for generating "
-                "Javascript catalog to static files.",
-    long_description=long_description,
+    version="0.4.6",
     author="Sebastien Fievet",
     author_email="zyegfryed@gmail.com",
-    license="BSD",
     url="http://django-statici18n.readthedocs.org/",
-    packages=find_packages(exclude=['tests']),
+    description="A Django app that provides helper for generating "
+                "Javascript catalog to static files.",
+    long_description=open('README.rst').read(),
+    package_dir={'': 'src'},
+    packages=find_packages('src'),
+    include_package_data=True,
+    zip_safe=False,
+    install_requires=[
+        "Django>=1.4",
+        "django-appconf>=0.4",
+    ],
+    license="BSD",
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Web Environment",
@@ -25,9 +29,5 @@ setup(
         'Programming Language :: Python :: 2.5',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
-    ],
-    zip_safe=False,
-    install_requires=[
-        'django-appconf>=0.4',
     ],
 )

@@ -1,0 +1,4 @@
+-r requirements-test.txt
+
+tox==1.6.1
+virtualenv==1.10.1
