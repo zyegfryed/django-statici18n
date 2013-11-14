@@ -13,7 +13,8 @@ try:
 
     def javascript_catalog(locale, domain, packages):
         catalog, plural = get_javascript_catalog(locale, domain, packages)
-        return render_javascript_catalog(catalog, plural).content
+        response = render_javascript_catalog(catalog, plural)
+        return response.content
 
 
 except ImportError:
