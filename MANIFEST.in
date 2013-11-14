@@ -1,2 +1,3 @@
-include setup.py README.rst MANIFEST.in LICENSE
-global-exclude *~
+include README.rst LICENSE
+recursive-exclude statici18n *.pyc
+recursive-exclude tests *
