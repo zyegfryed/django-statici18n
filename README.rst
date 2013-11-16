@@ -2,6 +2,13 @@
 django-statici18n
 =================
 
+.. image:: (https://travis-ci.org/zyegfryed/django-statici18n.png?branch=master
+   :alt: Build Status
+   :target: https://travis-ci.org/zyegfryed/django-statici18n
+
+.. image:: https://coveralls.io/repos/zyegfryed/django-statici18n/badge.png?branch=master
+  :target: https://coveralls.io/r/zyegfryed/django-statici18n?branch=master
+
 A Django app that provides helper for generating JavaScript catalog to static
 files.
 
