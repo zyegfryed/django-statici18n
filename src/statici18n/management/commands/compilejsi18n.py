@@ -1,15 +1,24 @@
-from __future__ import with_statement, print_function
+from __future__ import with_statement
 
 import os
 from optparse import make_option
 
 from django.core.management.base import NoArgsCommand
 from django.utils.translation import to_locale, activate
-
+from django.utils import six
 
 from statici18n.conf import settings
 from statici18n.utils import get_filename
-from statici18n.compat import javascript_catalog
+
+import django
+if django.VERSION >= (1, 6):
+    # Django >= 1.6
+    from django.views.i18n import (get_javascript_catalog,
+                                   render_javascript_catalog)
+else:
+    # Django <= 1.5
+    from statici18n.compat import (get_javascript_catalog,
+                                   render_javascript_catalog)
 
 
 class Command(NoArgsCommand):
@@ -45,19 +54,21 @@ class Command(NoArgsCommand):
                          for (lang_code, lang_name) in settings.LANGUAGES]
 
         if outputdir is None:
-            outputdir = os.path.join(
-                settings.STATICI18N_ROOT, settings.STATICI18N_OUTPUT_DIR)
+            outputdir = os.path.join(settings.STATICI18N_ROOT,
+                                     settings.STATICI18N_OUTPUT_DIR)
 
         for locale in languages:
             if verbosity > 0:
-                print("processing language", locale)
+                self.stdout.write("processing language %s\n" % locale)
 
-            activate(locale)
             jsfile = os.path.join(outputdir, get_filename(locale, domain))
             basedir = os.path.dirname(jsfile)
             if not os.path.isdir(basedir):
                 os.makedirs(basedir)
 
-            src = javascript_catalog(locale, domain, packages)
-            with open(jsfile, 'w') as f:
-                f.write(src)
+            activate(locale)
+            catalog, plural = get_javascript_catalog(locale, domain, packages)
+            response = render_javascript_catalog(catalog, plural)
+
+            with open(jsfile, 'w') as fp:
+                fp.write(six.text_type(response.content))
