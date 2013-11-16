@@ -2,6 +2,7 @@ import os
 import pytest
 
 from django.core import management
+from django.template import loader, Context
 from django.utils import six
 
 
@@ -28,3 +29,13 @@ def test_compile_locale_not_exists(settings):
     out = six.StringIO()
     management.call_command('compilejsi18n', locale='ar', verbosity=1, stderr=out)
     assert out.getvalue() == ""
+
+
+def test_templatetag(settings):
+    template = """
+    {% load statici18n %}
+    <script src="{% statici18n LANGUAGE_CODE %}"></script>
+    """
+    template = loader.get_template_from_string(template)
+    assert template.render(Context({'LANGUAGE_CODE': 'fr'})).strip() ==\
+        '<script src="/static/jsi18n/fr/djangojs.js"></script>'
