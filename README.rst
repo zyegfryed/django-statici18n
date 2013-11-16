@@ -2,7 +2,7 @@
 django-statici18n
 =================
 
-.. image:: (https://travis-ci.org/zyegfryed/django-statici18n.png?branch=master
+.. image:: https://travis-ci.org/zyegfryed/django-statici18n.png?branch=master
    :alt: Build Status
    :target: https://travis-ci.org/zyegfryed/django-statici18n
 
