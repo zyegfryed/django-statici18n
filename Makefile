@@ -16,8 +16,12 @@ test:
 	@py.test -q tests
 
 lint:
-	@flake8 src/statici18n
-	@flake8 tests
+	@flake8 src/statici18n tests
+
+coverage:
+	@py.test --cov=src/statici18n --cov-report=html
 
 clean:
 	@rm -fr build dist
+
+.PHONY: build
