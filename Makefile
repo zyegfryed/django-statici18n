@@ -19,7 +19,7 @@ lint:
 	@flake8 src/statici18n tests
 
 coverage:
-	@py.test --cov=src/statici18n --cov-report=html
+	@py.test -q tests --cov=src/statici18n --cov-report=html
 
 clean:
 	@rm -fr build dist
