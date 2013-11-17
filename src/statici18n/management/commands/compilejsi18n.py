@@ -1,11 +1,12 @@
 from __future__ import with_statement
 
+import io
 import os
 from optparse import make_option
 
 from django.core.management.base import NoArgsCommand
 from django.utils.translation import to_locale, activate
-from django.utils import six
+from django.utils.encoding import force_text
 
 from statici18n.conf import settings
 from statici18n.utils import get_filename
@@ -70,5 +71,5 @@ class Command(NoArgsCommand):
             catalog, plural = get_javascript_catalog(locale, domain, packages)
             response = render_javascript_catalog(catalog, plural)
 
-            with open(jsfile, 'w') as fp:
-                fp.write(six.text_type(response.content))
+            with io.open(jsfile, "w", encoding="utf-8") as fp:
+                fp.write(force_text(response.content))

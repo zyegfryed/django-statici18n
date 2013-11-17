@@ -14,4 +14,4 @@ msgstr ""
 
 #: static/test.js:1
 msgid "Hello world!"
-msgstr "Bonjour tout le monde !"
+msgstr "Bonjour à tous !"

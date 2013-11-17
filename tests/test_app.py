@@ -1,3 +1,4 @@
+import io
 import os
 import pytest
 
@@ -18,10 +19,10 @@ def test_compile_all(settings):
     filename = os.path.join(
         settings.STATICI18N_ROOT, "jsi18n", "fr", "djangojs.js")
     assert os.path.exists(filename)
-    with open(filename) as fp:
+    with io.open(filename, "r", encoding="utf-8") as fp:
         content = fp.read()
         assert "django.catalog" in content
-        assert '"Hello world!": "Bonjour tout le monde !"' in content
+        assert '"Hello world!": "Bonjour \\u00e0 tous !"' in content
 
 
 @pytest.mark.usefixtures("cleandir")
