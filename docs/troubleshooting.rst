@@ -4,9 +4,12 @@ Troubleshooting
 Files are not served during development
 ---------------------------------------
 
-Because ``django-statici18n`` relies on static files, you have to serve them with the Django dev server. To do so, refer to the Django documentation about `serving static files during development`_.
+Because ``django-statici18n`` relies on static files, you have to serve them
+with the Django dev server. To do so, refer to the Django documentation about
+`serving static files during development`_.
 
-In case you're not using ``staticfiles`` app, you might want to use something like the following::
+In case you're not using ``django.contrib.staticfiles`` app, you might want to
+use something like the following::
 
     # urls.py
     from django.conf import settings
