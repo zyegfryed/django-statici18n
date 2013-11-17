@@ -1,7 +1,3 @@
-=======
-Helpers
-=======
-
 .. module:: statici18n
    :synopsis: An app for handling JavaScript catalog.
 
