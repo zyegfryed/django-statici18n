@@ -28,6 +28,6 @@ Builds the full JavaScript catalog URL for the given locale, by joining the
 This is especially useful when using a non-local storage backend to
 `deploy files to a CDN`_ or when using `cache busting`_ to serve files.
 
-.. _`static template tag`: https://docs.djangoproject.com/en/1.5/ref/contrib/staticfiles/#static
-.. _`deploy files to a CDN`: https://docs.djangoproject.com/en/1.5/howto/static-files/#serving-static-files-from-a-cloud-service-or-cdn
-.. _`cache busting`: http://django-staticfiles.readthedocs.org/en/1.5/helpers/#cachedstaticfilesstorage
+.. _static template tag: https://docs.djangoproject.com/en/1.6/ref/contrib/staticfiles/#static
+.. _deploy files to a CDN: https://docs.djangoproject.com/en/1.6/howto/static-files/#serving-static-files-from-a-cloud-service-or-cdn
+.. _cache busting: https://docs.djangoproject.com/en/1.6/ref/contrib/staticfiles/#cachedstaticfilesstorage
