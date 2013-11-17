@@ -7,6 +7,7 @@ Contents
    :maxdepth: 2
 
    commands
-   helpers
+   templatetags
    settings
+   troubleshooting
    changelog

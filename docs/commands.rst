@@ -1,4 +1,4 @@
-Management Commands
+Management commands
 ===================
 
 .. highlight:: console

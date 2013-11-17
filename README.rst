@@ -12,6 +12,9 @@ django-statici18n
 A Django app that provides helper for generating JavaScript catalog to static
 files.
 
+Overview
+--------
+
 When dealing with internationalization in JavaScript code, Django provides the
 `javascript_catalog view`_ which sends out a JavaScript code library with
 functions that mimic the gettext interface, plus an array of translation
