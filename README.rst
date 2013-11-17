@@ -22,7 +22,7 @@ strings.
 
 At first glance, it works well and everything is fine. But, because
 `javascript_catalog view`_ is generating JavaScript catalog dynamically on
-each request, it's adding an overhead that can be an issue with site growth.
+each request, it's `adding an overhead`_ that can be an issue with site growth.
 
 That's what ``django-statici18n`` is for:
 
@@ -34,6 +34,7 @@ The main website for ``django-statici18n`` is
 `github.com/zyegfryed/django-statici18n`_ where you can also file tickets.
 
 .. _javascript_catalog view: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#module-django.views.i18n
+.. _adding an overhead: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#note-on-performance
 .. _github.com/zyegfryed/django-statici18n: https://github.com/zyegfryed/django-statici18n
 
 Installation
@@ -66,7 +67,9 @@ Installation
     )
 
 - Edit your template(s) and replace the `dynamically generated script`_ by the
-  statically generated one::
+  statically generated one:
+
+  .. code-block:: html+django
 
     <script src="{{ STATIC_URL }}jsi18n/{{ LANGUAGE_CODE }}/djangojs.js"></script>
 
@@ -80,7 +83,9 @@ Installation
 
 The following step assumes you're using the ``django.contrib.staticfiles`` app.
 
-- Edit your template(s) and use the provided template tag::
+- Edit your template(s) and use the provided template tag:
+
+  .. code-block:: html+django
 
     {% load statici18n %}
     <script src="{% statici18n LANGUAGE_CODE %}"></script>
