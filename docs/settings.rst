@@ -31,22 +31,9 @@ Settings
 
 .. attribute:: STATICI18N_ROOT
 
-    :default: ``'static'``
+    :default: ``STATIC_ROOT``
 
-    Controls the file path that static files will be written into.
-
-    By default, the file path is relative to the current directory you're
-    calling the ``compilejsi8n`` command. Thus, it will generally be the static
-    directory of your project and the same one you're using with
-    ``django.contrib.staticfiles``.
-
-.. warning::
-
-    When using ``django.contrib.staticfiles`` or ``django-staticfiles`` in
-    conjunction with ``django-statici18n``, the best practice is to set
-    ``STATICI18N_ROOT`` to ``STATIC_ROOT`` in your settings file to avoid any
-    surprise during deployment. This is not done in the application by default
-    to keep it simple and loosely-coupled.
+    Controls the file path that catalog files will be written into.
 
 .. attribute:: STATICI18N_OUTPUT_DIR
 
@@ -73,5 +60,5 @@ Settings
     The final filename is resulted by joining ``STATICI18N_ROOT``,
     ``STATICI18N_OUTPUT_DIR`` and ``STATICI18N_FILENAME_FUNCTION``.
 
-    For example, with default settings in place, the JavaScript catalog
+    For example, with default settings in place and ``STATIC_ROOT = 'static'``, the JavaScript catalog
     generated for the ``en_GB`` locale is: ``'static/jsi18n/en-gb/djangojs.js'``

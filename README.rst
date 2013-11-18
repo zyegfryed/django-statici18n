@@ -75,9 +75,9 @@ Installation
 
 .. note::
 
-    By default, the generated catalogs are stored to ``static/jsi18n``. You
-    can modify the output path and more options by tweaking ``django-
-    statici18n`` settings.
+    By default, the generated catalogs are stored to ``STATIC_ROOT/jsi18n``.
+    You can modify the output path and more options by tweaking
+    ``django-statici18n`` settings.
 
 **(Optionnal)**
 

@@ -16,6 +16,8 @@ def test_compile_all(settings):
     assert len(lines) == 2
     assert lines[0] == "processing language en"
     assert lines[1] == "processing language fr"
+    assert os.path.exists(os.path.join(
+        settings.STATIC_ROOT, "jsi18n", "en", "djangojs.js"))
     filename = os.path.join(
         settings.STATICI18N_ROOT, "jsi18n", "fr", "djangojs.js")
     assert os.path.exists(filename)
