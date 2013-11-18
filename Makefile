@@ -13,7 +13,7 @@ upload: build
 	@python setup.py bdist_wheel upload -r pypi
 
 test:
-	@py.test -q tests
+	@py.test -q tests || exit 1
 
 lint:
 	@flake8 src/statici18n tests
