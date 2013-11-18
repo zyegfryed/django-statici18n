@@ -10,4 +10,5 @@ Contents
    templatetags
    settings
    troubleshooting
+   faq
    changelog
