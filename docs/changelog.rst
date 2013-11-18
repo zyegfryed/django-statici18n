@@ -1,6 +1,19 @@
 Changelog
 =========
 
+v1.0 (2013 Nov 18)
+------------------
+
+* Added Django 1.6 support (thanks @ryanbutterfield)
+* Improved documentation
+* Added full test suite
+
+.. warning::
+
+   The following changes are backward-incompatible with the previous release.
+
+* Now use ``STATIC_ROOT`` as default value for ``STATICI18N_ROOT``.
+
 v0.4.5 (2013 Jun 13)
 --------------------
 
