@@ -11,3 +11,4 @@ pip-log.txt
 /dist
 /docs/html
 /docs/doctrees
+/docs/_build
