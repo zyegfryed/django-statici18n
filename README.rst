@@ -1,4 +1,3 @@
-=================
 django-statici18n
 =================
 
@@ -40,34 +39,34 @@ The main website for ``django-statici18n`` is
 Installation
 ------------
 
-- Use your favorite Python packaging tool to install ``django-statici18n``
-  from `PyPI`_, e.g.::
+1. Use your favorite Python packaging tool to install ``django-statici18n``
+   from `PyPI`_, e.g.::
 
     pip install django-statici18n
 
-- Add ``'statici18n'`` to your ``INSTALLED_APPS`` setting::
+2. Add ``'statici18n'`` to your ``INSTALLED_APPS`` setting::
 
     INSTALLED_APPS = [
         # ...
         'statici18n',
     ]
 
-- Once you have `translated`_ and `compiled`_ your messages, use the
-  ``compilejsi18n`` management command::
+3. Once you have `translated`_ and `compiled`_ your messages, use the
+   ``compilejsi18n`` management command::
 
     python manage.py compilejsi18n
 
-- Add the ``django.core.context_processors.i18n`` context processor to your
-  ``TEMPLATE_CONTEXT_PROCESSORS`` setting - should have already been set by
-  Django::
+4. Add the ``django.core.context_processors.i18n`` context processor to your
+   ``TEMPLATE_CONTEXT_PROCESSORS`` setting - should have already been set by
+   Django::
 
     TEMPLATE_CONTEXT_PROCESSORS = (
       # ...
       'django.core.context_processors.i18n',
     )
 
-- Edit your template(s) and replace the `dynamically generated script`_ by the
-  statically generated one:
+5. Edit your template(s) and replace the `dynamically generated script`_ by the
+   statically generated one:
 
   .. code-block:: html+django
 
@@ -81,9 +80,9 @@ Installation
 
 **(Optionnal)**
 
-The following step assumes you're using the ``django.contrib.staticfiles`` app.
+The following step assumes you're using `django.contrib.staticfiles`_.
 
-- Edit your template(s) and use the provided template tag:
+5. Edit your template(s) and use the provided template tag:
 
   .. code-block:: html+django
 
@@ -94,3 +93,4 @@ The following step assumes you're using the ``django.contrib.staticfiles`` app.
 .. _translated: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#message-files
 .. _compiled: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#compiling-message-files
 .. _dynamically generated script: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#using-the-javascript-translation-catalog
+.. _django.contrib.staticfiles: https://docs.djangoproject.com/en/1.6/ref/contrib/staticfiles/

@@ -21,7 +21,8 @@ Settings
 
     A list of packages to check for translations.
 
-    Can be overrided with the ``-p/--package`` option of ``compilejsi18n`` command.
+    Can be overrided with the ``-p/--package`` option of :ref:`compilejsi18n`
+    command.
 
     Each string in packages should be in Python dotted-package syntax (the
     same format as the strings in ``INSTALLED_APPS``) and should refer to a
@@ -39,8 +40,8 @@ Settings
 
     :Default: ``'jsi18n'``
 
-    Controls the directory inside ``STATICI18N_ROOT`` that generated files will
-    be written into.
+    Controls the directory inside :attr:`STATICI18N_ROOT` that generated files
+    will be written into.
 
 .. attribute:: STATICI18N_FILENAME_FUNCTION
 
@@ -57,8 +58,8 @@ Settings
 
     By default, the function returns the path ``'<language_code>/<domain>.js'``.
 
-    The final filename is resulted by joining ``STATICI18N_ROOT``,
-    ``STATICI18N_OUTPUT_DIR`` and ``STATICI18N_FILENAME_FUNCTION``.
+    The final filename is resulted by joining :attr:`STATICI18N_ROOT`,
+    :attr:`STATICI18N_OUTPUT_DIR` and :attr:`STATICI18N_FILENAME_FUNCTION`.
 
     For example, with default settings in place and ``STATIC_ROOT = 'static'``, the JavaScript catalog
     generated for the ``en_GB`` locale is: ``'static/jsi18n/en-gb/djangojs.js'``

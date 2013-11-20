@@ -1,13 +1,16 @@
 FAQ
 ===
 
-How to use static storage with ``django-statici18n``?
------------------------------------------------------
+.. _staticfiles-configuration:
 
-Due to the modularity of ``django.contrib.staticfiles`` it's easy to use the
-storage facility provided by tweaking some settings.
+How to configure static files with ``django-statici18n``?
+---------------------------------------------------------
 
-There's two solution leveraging the ``STATICFILES_FINDERS`` setting:
+Due to the modularity of :mod:`django.contrib.staticfiles` it's easy to use
+the storage facility provided by tweaking some settings.
+
+There's two solution leveraging the :django:setting:`STATICFILES_FINDERS`
+setting:
 
 * using a dedicated application, or,
 
@@ -16,10 +19,9 @@ There's two solution leveraging the ``STATICFILES_FINDERS`` setting:
 In the next sections, we'll detail with examples how to use both solutions.
 Choose the one that best fits your needs and/or taste.
 
-To kown more about the static files app refer to the documentation related to
-`static files management`_.
+See `static files management`_ for more information.
 
-.. _static files management: https://docs.djangoproject.com/en/1.6/ref/contrib/staticfiles/
+.. _static files management: http://django.readthedocs.org/en/1.6.x/ref/contrib/staticfiles/
 
 Using a placeholder app
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -29,12 +31,13 @@ You need to have the ``AppDirectoriesFinder`` finder enabled (the default).
 Create a minimal app with a ``static`` subdirectory. For example, let's create
 an app named **ì18n** to hold the generated catalogs::
 
+    cd /path/to/your/django/project
     mkdir -p i18n/static
-    touch i18n/models.py
+    touch i18n/__init__.py i18n/models.py
 
 Your project layout should then looks like the following::
 
-    .
+    example_project
     |-- app
     |   |-- __init__.py
     |   |-- admin.py
@@ -45,34 +48,47 @@ Your project layout should then looks like the following::
     |   |-- tests.py
     |   `-- views.py
     |-- i18n                   <-- Your dedicated app
+    |   |-- __init__.py
     |   |-- models.py          <-- A placeholder file to enable app loading
     |   `-- static             <-- The output directory of catalog files
+    |       `-- jsi18n
     |-- manage.py
-    `-- project
-        |-- __init__.py
-        |-- locale
-        |-- settings.py
-        |-- static
-        |-- templates
-        `-- urls.py
+    |-- project
+    |   |-- __init__.py
+    |   |-- locale
+    |   |-- settings.py
+    |   |-- templates
+    |   `-- urls.py
+    `-- public
+        `-- static             <-- The output directory of collected
+            `-- jsi18n             static files for deployment
 
 Then update your settings accordingly. Following the previous example::
 
     # project/settings.py
-    [...]
-    INSTALLED_APPS += ('i18n',)
+
+    # ... the rest of your settings here ...
+
+    INSTALLED_APPS = (
+        'django.contrib.staticfiles',
+        # ...
+        'statici18n',
+        'i18n',
+    )
+
+    STATIC_ROOT = os.path.join(BASE_DIR, "public", "static")
     STATICI18N_ROOT = os.path.join(BASE_DIR, "i18n", "static")
 
 
 Using a placeholder directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This approach extends the ``STATICFILES_DIRS`` setting. You need
-to have the ``FileSystemFinder`` finder enabled (the default).
+This approach extends the :django:setting:`STATICFILES_DIRS` setting.
+You need to have the ``FileSystemFinder`` finder enabled (the default).
 
 Following is an example project layout::
 
-    .
+    example_project
     |-- app
     |   |-- __init__.py
     |   |-- admin.py
@@ -85,14 +101,26 @@ Following is an example project layout::
     |   |-- __init__.py
     |   |-- locale
     |   |-- settings.py
-    |   |-- static
+    |   |-- static             <-- Directory holding catalog files
+    |   |   `-- jsi18n
     |   |-- templates
     |   `-- urls.py
-    `-- static_i18n            <-- Directory holding catalog files
+    `-- public
+        `-- static             <-- The output directory of collected
+                                   static files for deployment
 
 Then update your settings accordingly. Following the previous example::
 
     # project/settings.py
-    [...]
-    STATICI18N_ROOT = os.path.join(BASE_DIR, 'static_i18n')
+
+    # ... the rest of your settings here ...
+
+    INSTALLED_APPS = (
+        'django.contrib.staticfiles',
+        # ...
+        'statici18n',
+    )
+
+    STATIC_ROOT = os.path.join(BASE_DIR, "public", "static")
+    STATICI18N_ROOT = os.path.join(BASE_DIR, "project", "static")
     STATICFILES_DIRS += (STATICI18N_ROOT,)

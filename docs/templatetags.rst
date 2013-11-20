@@ -13,21 +13,19 @@ statici18n
 
 .. versionadded:: 0.4
 
-.. warning::
-
-   Behind the scenes, it's a thin wrapper around the `static template tag`_.
-   Therefore, ensure that ``django.contrib.staticfiles`` is enabled - i.e is
-   added to your ``INSTALLED_APPS`` - before proceeding.
-
-Builds the full JavaScript catalog URL for the given locale, by joining the
-``STATICI18N_OUTPUT_DIR`` and ``STATICI18N_FILENAME_FUNCTION`` settings::
+Builds the full JavaScript catalog URL for the given locale by joining the
+:attr:`~django.conf.settings.STATICI18N_OUTPUT_DIR` and
+:attr:`~django.conf.settings.STATICI18N_FILENAME_FUNCTION` settings::
 
     {% load statici18n %}
     <script src="{% statici18n LANGUAGE_CODE %}"></script>
 
 This is especially useful when using a non-local storage backend to
-`deploy files to a CDN`_ or when using `cache busting`_ to serve files.
+:ref:`deploy files to a CDN <django:staticfiles-from-cdn>` or when using :class:`~django.contrib.staticfiles.storage.CachedStaticFilesStorage` storage to serve files.
 
-.. _static template tag: https://docs.djangoproject.com/en/1.6/ref/contrib/staticfiles/#static
-.. _deploy files to a CDN: https://docs.djangoproject.com/en/1.6/howto/static-files/#serving-static-files-from-a-cloud-service-or-cdn
-.. _cache busting: https://docs.djangoproject.com/en/1.6/ref/contrib/staticfiles/#cachedstaticfilesstorage
+.. note::
+
+   Behind the scenes, it's a thin wrapper around the :django:ttag:`static`
+   template tag. Therefore, ensure that :mod:`django.contrib.staticfiles` is
+   configured before proceeding. See :ref:`staticfiles-configuration` for more
+   information.

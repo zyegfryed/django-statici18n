@@ -3,7 +3,7 @@ Management commands
 
 .. highlight:: console
 
-.. compilejsi18n:
+.. _compilejsi18n:
 
 compilejsi18n
 -------------
@@ -25,7 +25,8 @@ Some commonly used options are:
 
 ``-o OUPUT_DIR`` or ``--output=OUTPUT_DIR``
     Output directory to store generated catalogs. Defaults to the joining path
-    of ``STATICI18N_ROOT`` and ``STATICI18N_OUTPUT_DIR``.
+    of :attr:`~django.conf.settings.STATICI18N_ROOT` and
+    :attr:`~django.conf.settings.STATICI18N_OUTPUT_DIR`.
 
 For a full list of options, refer to the ``compilejsi18n`` management command
 help by running::
@@ -35,5 +36,4 @@ help by running::
 
 .. note::
 
-    Any missing directories will be created by the command when needed.
-
+    Missing directories will be created on-the-fly by the command when invoked.

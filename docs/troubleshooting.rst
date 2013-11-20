@@ -4,12 +4,9 @@ Troubleshooting
 Files are not served during development
 ---------------------------------------
 
-Because ``django-statici18n`` relies on static files, you have to serve them
-with the Django dev server. To do so, refer to the Django documentation about
-`serving static files during development`_.
-
-In case you're not using ``django.contrib.staticfiles`` app, you might want to
-use something like the following::
+By default ``django-statici18n`` doesn't rely on
+:mod:`django.contrib.staticfiles`, so you have to serve the generated catalogs
+files with the Django dev server. For example::
 
     # urls.py
     from django.conf import settings
@@ -19,4 +16,12 @@ use something like the following::
         # ... the rest of your URLconf goes here ...
     ) + static(settings.STATIC_URL, document_root=settings.STATICI18N_ROOT)
 
-.. _serving static files during development: https://docs.djangoproject.com/en/1.6/howto/static-files/#serving-static-files-during-development
+However, when using the :mod:`statici18n` template tag you should first
+integrate ``django-static18n`` with :mod:`django.contrib.staticfiles`. See
+:ref:`staticfiles-configuration` for more information.
+
+.. note::
+
+    Even if the setup looks a bit more tedious at first sight, using the
+    :mod:`statici18n` template tag is the recommended way and it will make
+    your life easier in the long run.
