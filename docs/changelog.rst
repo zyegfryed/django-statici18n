@@ -1,8 +1,14 @@
 Changelog
 =========
 
-v1.0 (2013 Nov 18)
-------------------
+v1.0.1 (2013 Nov 20)
+--------------------
+
+* Improved documentation clarity and cross-references
+* Updated classifiers
+
+v1.0.0 (2013 Nov 18)
+--------------------
 
 * Added Django 1.6 support (thanks @ryanbutterfield)
 * Improved documentation
