@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v1.1 (2014 Jan 12)
+-------------------
+
+* Added i18ninline template tag (thanks @jezdez)
+* Added RequireJS entry to the FAQ (thanks @Ewjoachim)
+
 v1.0.1 (2013 Nov 20)
 --------------------
 
