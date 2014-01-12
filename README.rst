@@ -89,6 +89,13 @@ The following step assumes you're using `django.contrib.staticfiles`_.
     {% load statici18n %}
     <script src="{% statici18n LANGUAGE_CODE %}"></script>
 
+6. Or inline the JavaScript directly in your template:
+
+  .. code-block:: html+django
+
+    {% load statici18n %}
+    <script>{% inlinei18n LANGUAGE_CODE %}</script>
+
 .. _PyPI: http://pypi.python.org/pypi/django-statici18n
 .. _translated: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#message-files
 .. _compiled: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#compiling-message-files

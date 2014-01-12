@@ -34,7 +34,7 @@ def test_compile_locale_not_exists(settings):
     assert out.getvalue() == ""
 
 
-def test_templatetag(settings):
+def test_statici18n_templatetag(settings):
     template = """
     {% load statici18n %}
     <script src="{% statici18n LANGUAGE_CODE %}"></script>
@@ -42,3 +42,15 @@ def test_templatetag(settings):
     template = loader.get_template_from_string(template)
     assert template.render(Context({'LANGUAGE_CODE': 'fr'})).strip() ==\
         '<script src="/static/jsi18n/fr/djangojs.js"></script>'
+
+
+@pytest.mark.usefixtures("cleandir")
+def test_inlinei18n_templatetag(settings):
+    template = """
+    {% load statici18n %}
+    <script src="{% inlinei18n LANGUAGE_CODE %}"></script>
+    """
+    management.call_command('compilejsi18n')
+    template = loader.get_template_from_string(template)
+    rendered = template.render(Context({'LANGUAGE_CODE': 'fr'})).strip()
+    assert 'var django = globals.django || (globals.django = {});' in rendered
