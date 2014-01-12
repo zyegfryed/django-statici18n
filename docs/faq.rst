@@ -23,6 +23,9 @@ See `static files management`_ for more information.
 
 .. _static files management: http://django.readthedocs.org/en/1.6.x/ref/contrib/staticfiles/
 
+
+.. _staticfiles-app-configuration:
+
 Using a placeholder app
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -80,6 +83,8 @@ Then update your settings accordingly. Following the previous example::
     STATICI18N_ROOT = os.path.join(BASE_DIR, "i18n", "static")
 
 
+.. _staticfiles-directory-configuration:
+
 Using a placeholder directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -124,3 +129,36 @@ Then update your settings accordingly. Following the previous example::
     STATIC_ROOT = os.path.join(BASE_DIR, "public", "static")
     STATICI18N_ROOT = os.path.join(BASE_DIR, "project", "static")
     STATICFILES_DIRS += (STATICI18N_ROOT,)
+
+
+Can I use the generated catalog with RequireJS_?
+-----------------------------------------------
+
+Yes. You just need some boilerplate configuration to export the object
+reference, like the following::
+
+    # settings.py
+    STATICI18N_ROOT = os.path.join(BASE_DIR, "project", "static")
+    STATICFILES_DIRS += (STATICI18N_ROOT,)
+
+    # app.js
+    require.config({
+            baseUrl: "static/js",
+            paths: {
+                    "jsi18n": "../jsi18n/{{ LANGUAGE_CODE }}/djangojs",
+            },
+            shim: {
+                    "jsi18n":
+                    {
+                            exports: 'django'
+                    },
+            }
+    }
+
+    // Usage
+    require(["jquery", "jsi18n"], function($, jsi18n) {
+        console.log(jsi18n.gettext('Internationalization is fun !'));
+            // > "L’internationalisation, c'est cool !"
+    }
+
+.. _RequireJS: http://requirejs.org/
