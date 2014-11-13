@@ -25,3 +25,11 @@ integrate ``django-static18n`` with :mod:`django.contrib.staticfiles`. See
     Even if the setup looks a bit more tedious at first sight, using the
     :mod:`statici18n` template tag is the recommended way and it will make
     your life easier in the long run.
+
+
+Catalog is empty
+----------------
+
+statici18n requires that the locale paths are available in the settings.
+So just add ``LOCALE_PATHS=('path to your locale directory',)`` to the settings file.
+
