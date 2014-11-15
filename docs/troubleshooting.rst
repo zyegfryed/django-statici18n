@@ -30,6 +30,10 @@ integrate ``django-static18n`` with :mod:`django.contrib.staticfiles`. See
 Catalog is empty
 ----------------
 
-statici18n requires that the locale paths are available in the settings.
-So just add ``LOCALE_PATHS=('path to your locale directory',)`` to the settings file.
+``django-statici18n`` requires that the locale paths are available in the settings.
+So just add :django:setting:`LOCALE_PATHS=('/path/to/your/locale/directory',)` to the settings file.
+
+For more information on how Django discovers translations, refer to the `official documentation`_.
+
+.. _official documentation: https://docs.djangoproject.com/en/1.7/topics/i18n/translation/#how-django-discovers-translations
 
