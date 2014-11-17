@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.1.1 (2014 Nov 17)
+--------------------
+
+* Added empty catalog entry to troubleshooting section (thanks @eduardo-matos)
+
 v1.1 (2014 Jan 12)
 -------------------
 
