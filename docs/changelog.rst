@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v1.1.2 (2015 Mar 18)
+--------------------
+
+* Updated dependencies
+* Added Python 3.2 and Django 1.7 test support
+* Updated requirements to include the newest version of appconf and changed
+  setup.py to reflect appconf requirement (thanks Nicholas Lockhart)
+
 v1.1.1 (2014 Nov 17)
 --------------------
 
