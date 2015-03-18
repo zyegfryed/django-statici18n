@@ -1,2 +1,2 @@
-django-appconf>=0.6
-six==1.4.1
+django-appconf==0.6
+six==1.9.0
