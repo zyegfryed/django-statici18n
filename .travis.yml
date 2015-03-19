@@ -21,7 +21,7 @@ matrix:
     - python: "2.6"
       env: DJANGO_VERSION=1.7
 before_install:
-  - apt-get install -y shtool
+  - sudo apt-get install -y shtool
   - shtool version -s "${DJANGO_VERSION}.0" dj_version.txt
   - shtool version -i r dj_version.txt
 install:
