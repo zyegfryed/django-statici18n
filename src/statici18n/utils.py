@@ -1,6 +1,10 @@
 import os
 
-from django.utils.importlib import import_module
+try:
+    # Python >= 3.1
+    from importlib import import_module
+except ImportError:
+    from django.utils.importlib import import_module
 
 from statici18n.conf import settings
 
