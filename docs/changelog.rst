@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v1.1.3 (2015 Apr 19)
+--------------------
+
+* Add django 1.8 support
+* Fix deprecation warning from django.utils.importlib (thanks @ogai)
+
 v1.1.2 (2015 Mar 18)
 --------------------
 
