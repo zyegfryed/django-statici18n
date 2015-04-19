@@ -10,6 +10,7 @@ env:
   - DJANGO_VERSION=1.5
   - DJANGO_VERSION=1.6
   - DJANGO_VERSION=1.7
+  - DJANGO_VERSION=1.8
 matrix:
   exclude:
     - python: "3.2"
@@ -20,6 +21,8 @@ matrix:
       env: DJANGO_VERSION=1.4
     - python: "2.6"
       env: DJANGO_VERSION=1.7
+    - python: "2.6"
+      env: DJANGO_VERSION=1.8
 before_install:
   - sudo apt-get install -y shtool
   - shtool version -s "${DJANGO_VERSION}.0" dj_version.txt

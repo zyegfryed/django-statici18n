@@ -3,8 +3,21 @@ import os
 import pytest
 
 from django.core import management
-from django.template import loader, Context
+from django.template import Context
 from django.utils import six
+
+try:
+    # Django >= 1.8
+    from django.template import Engine
+
+    def get_template_from_string(template_code):
+        return Engine().from_string(template_code)
+
+except ImportError:
+    # Django < 1.8
+    from django.template import loader
+
+    get_template_from_string = loader.get_template_from_string
 
 
 @pytest.mark.usefixtures("cleandir")
@@ -39,7 +52,7 @@ def test_statici18n_templatetag(settings):
     {% load statici18n %}
     <script src="{% statici18n LANGUAGE_CODE %}"></script>
     """
-    template = loader.get_template_from_string(template)
+    template = get_template_from_string(template)
     assert template.render(Context({'LANGUAGE_CODE': 'fr'})).strip() ==\
         '<script src="/static/jsi18n/fr/djangojs.js"></script>'
 
@@ -51,6 +64,6 @@ def test_inlinei18n_templatetag(settings):
     <script src="{% inlinei18n LANGUAGE_CODE %}"></script>
     """
     management.call_command('compilejsi18n')
-    template = loader.get_template_from_string(template)
+    template = get_template_from_string(template)
     rendered = template.render(Context({'LANGUAGE_CODE': 'fr'})).strip()
     assert 'var django = globals.django || (globals.django = {});' in rendered
