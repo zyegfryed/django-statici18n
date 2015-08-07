@@ -41,6 +41,11 @@ class Command(NoArgsCommand):
     )
     help = "Collect Javascript catalog files in a single location."
 
+    def __init__(self):
+        super(NoArgsCommand, self).__init__()
+        if hasattr(self, 'requires_system_checks'):
+            self.requires_system_checks = False
+
     def handle_noargs(self, **options):
         locale = options.get('locale')
         domain = options['domain']
