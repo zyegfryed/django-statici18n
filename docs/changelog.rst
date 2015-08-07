@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v1.1.4 (2015 Aug 7)
+---------------------
+
+* Fix #14: compilejsi18n command should skip system checks
+  (thanks @bubenkoff and @xolox)
+* Update python2.7 to 2.7.10
+
 v1.1.3 (2015 Apr 19)
 --------------------
 
