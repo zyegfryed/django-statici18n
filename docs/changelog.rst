@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.1.5 (2015 Aug 7)
+-------------------
+
+* New release due to missing changelog in previous one
+
 v1.1.4 (2015 Aug 7)
 ---------------------
 
