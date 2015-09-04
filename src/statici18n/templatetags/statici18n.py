@@ -8,7 +8,6 @@ except ImportError:
     from staticfiles.templatetags.staticfiles import static
     from staticfiles.storage import staticfiles_storage
 
-from statici18n.conf import settings
 from statici18n.utils import get_path
 
 register = template.Library()
