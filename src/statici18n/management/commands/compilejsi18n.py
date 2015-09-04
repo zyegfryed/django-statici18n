@@ -1,5 +1,7 @@
 from __future__ import with_statement
 
+from collections import OrderedDict
+from cStringIO import StringIO
 import io
 import os
 from optparse import make_option
@@ -65,17 +67,36 @@ class Command(NoArgsCommand):
                          for (lang_code, lang_name) in settings.LANGUAGES]
 
         if outputdir is not None:
-            def open_file_for_writing(locale):
+            def write_file(locale, content):
                 jsfile = os.path.join(outputdir, get_filename(locale, domain))
                 basedir = os.path.dirname(jsfile)
                 if not os.path.isdir(basedir):
                     os.makedirs(basedir)
 
-                return io.open(jsfile, "w", encoding="utf-8")
+                with io.open(jsfile, "w", encoding="utf-8") as fp:
+                    fp.write(content)
+
+            def post_process():
+                pass
 
         else:
-            def open_file_for_writing(locale):
-                return staticfiles_storage.open(get_path(locale), "w")
+            paths = OrderedDict()
+
+            def write_file(locale, content):
+                path = get_filename(locale, domain)
+                paths[path] = (staticfiles_storage, path)
+                staticfiles_storage.save(path,
+                                         StringIO(content))
+
+            def post_process():
+                if not hasattr(staticfiles_storage, 'post_process'):
+                    return
+
+                processor = staticfiles_storage.post_process(paths)
+                for original_path, processed_path, processed in processor:
+                    if processed:
+                        self.stdout.write("Post-processed file %s as %s" %
+                                         (original_path, processed_path))
 
 
         for locale in languages:
@@ -86,5 +107,6 @@ class Command(NoArgsCommand):
             catalog, plural = get_javascript_catalog(locale, domain, packages)
             response = render_javascript_catalog(catalog, plural)
 
-            with open_file_for_writing(locale) as fp:
-                fp.write(force_text(response.content))
+            write_file(locale, force_text(response.content))
+
+        post_process()
