@@ -1,5 +1,4 @@
 from __future__ import absolute_import
-import os
 from django import template
 
 try:
@@ -9,15 +8,9 @@ except ImportError:
     from staticfiles.templatetags.staticfiles import static
     from staticfiles.storage import staticfiles_storage
 
-from statici18n.conf import settings
-from statici18n.utils import get_filename
+from statici18n.utils import get_path
 
 register = template.Library()
-
-
-def get_path(locale):
-    return os.path.join(settings.STATICI18N_OUTPUT_DIR,
-                        get_filename(locale, settings.STATICI18N_DOMAIN))
 
 
 @register.simple_tag

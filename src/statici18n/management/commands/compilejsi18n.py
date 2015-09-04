@@ -1,5 +1,7 @@
 from __future__ import with_statement
 
+from collections import OrderedDict
+from cStringIO import StringIO
 import io
 import os
 from optparse import make_option
@@ -8,8 +10,13 @@ from django.core.management.base import NoArgsCommand
 from django.utils.translation import to_locale, activate
 from django.utils.encoding import force_text
 
+try:
+    from django.contrib.staticfiles.storage import staticfiles_storage
+except ImportError:
+    from staticfiles.storage import staticfiles_storage
+
 from statici18n.conf import settings
-from statici18n.utils import get_filename
+from statici18n.utils import get_filename, get_path
 
 import django
 if django.VERSION >= (1, 6):
@@ -59,22 +66,46 @@ class Command(NoArgsCommand):
             languages = [to_locale(lang_code)
                          for (lang_code, lang_name) in settings.LANGUAGES]
 
-        if outputdir is None:
-            outputdir = os.path.join(settings.STATICI18N_ROOT,
-                                     settings.STATICI18N_OUTPUT_DIR)
+        if outputdir is not None:
+            def write_file(locale, content):
+                jsfile = os.path.join(outputdir, get_filename(locale, domain))
+                basedir = os.path.dirname(jsfile)
+                if not os.path.isdir(basedir):
+                    os.makedirs(basedir)
+
+                with io.open(jsfile, "w", encoding="utf-8") as fp:
+                    fp.write(content)
+
+            def post_process():
+                pass
+
+        else:
+            paths = OrderedDict()
+
+            def write_file(locale, content):
+                path = get_path(locale, domain)
+                paths[path] = (staticfiles_storage, path)
+                staticfiles_storage.save(path,
+                                         StringIO(content))
+
+            def post_process():
+                if not hasattr(staticfiles_storage, 'post_process'):
+                    return
+
+                processor = staticfiles_storage.post_process(paths)
+                for original_path, processed_path, processed in processor:
+                    if processed:
+                        self.stdout.write("Post-processed file %s as %s" %
+                                         (original_path, processed_path))
 
         for locale in languages:
             if verbosity > 0:
                 self.stdout.write("processing language %s\n" % locale)
 
-            jsfile = os.path.join(outputdir, get_filename(locale, domain))
-            basedir = os.path.dirname(jsfile)
-            if not os.path.isdir(basedir):
-                os.makedirs(basedir)
-
             activate(locale)
             catalog, plural = get_javascript_catalog(locale, domain, packages)
             response = render_javascript_catalog(catalog, plural)
 
-            with io.open(jsfile, "w", encoding="utf-8") as fp:
-                fp.write(force_text(response.content))
+            write_file(locale, force_text(response.content))
+
+        post_process()
