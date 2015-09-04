@@ -16,7 +16,7 @@ except ImportError:
     from staticfiles.storage import staticfiles_storage
 
 from statici18n.conf import settings
-from statici18n.utils import get_filename
+from statici18n.utils import get_path
 
 import django
 if django.VERSION >= (1, 6):
@@ -83,7 +83,7 @@ class Command(NoArgsCommand):
             paths = OrderedDict()
 
             def write_file(locale, content):
-                path = get_filename(locale, domain)
+                path = get_path(locale, domain)
                 paths[path] = (staticfiles_storage, path)
                 staticfiles_storage.save(path,
                                          StringIO(content))
