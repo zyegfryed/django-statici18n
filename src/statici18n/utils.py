@@ -36,6 +36,7 @@ def default_filename(locale, domain):
     from django.utils.translation.trans_real import to_language
     return os.path.join(to_language(locale), '%s.js' % domain)
 
+
 def get_path(locale, domain=None):
     if domain is None:
         domain = settings.STATICI18N_DOMAIN

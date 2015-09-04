@@ -16,7 +16,7 @@ except ImportError:
     from staticfiles.storage import staticfiles_storage
 
 from statici18n.conf import settings
-from statici18n.utils import get_path
+from statici18n.utils import get_filename, get_path
 
 import django
 if django.VERSION >= (1, 6):
@@ -97,7 +97,6 @@ class Command(NoArgsCommand):
                     if processed:
                         self.stdout.write("Post-processed file %s as %s" %
                                          (original_path, processed_path))
-
 
         for locale in languages:
             if verbosity > 0:
