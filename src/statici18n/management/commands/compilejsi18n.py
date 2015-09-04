@@ -8,6 +8,11 @@ from django.core.management.base import NoArgsCommand
 from django.utils.translation import to_locale, activate
 from django.utils.encoding import force_text
 
+try:
+    from django.contrib.staticfiles.storage import staticfiles_storage
+except ImportError:
+    from staticfiles.storage import staticfiles_storage
+
 from statici18n.conf import settings
 from statici18n.utils import get_filename
 
@@ -59,22 +64,27 @@ class Command(NoArgsCommand):
             languages = [to_locale(lang_code)
                          for (lang_code, lang_name) in settings.LANGUAGES]
 
-        if outputdir is None:
-            outputdir = os.path.join(settings.STATICI18N_ROOT,
-                                     settings.STATICI18N_OUTPUT_DIR)
+        if outputdir is not None:
+            def open_file_for_writing(locale):
+                jsfile = os.path.join(outputdir, get_filename(locale, domain))
+                basedir = os.path.dirname(jsfile)
+                if not os.path.isdir(basedir):
+                    os.makedirs(basedir)
+
+                return io.open(jsfile, "w", encoding="utf-8")
+
+        else:
+            def open_file_for_writing(locale):
+                return staticfiles_storage.open(get_path(locale), "w")
+
 
         for locale in languages:
             if verbosity > 0:
                 self.stdout.write("processing language %s\n" % locale)
 
-            jsfile = os.path.join(outputdir, get_filename(locale, domain))
-            basedir = os.path.dirname(jsfile)
-            if not os.path.isdir(basedir):
-                os.makedirs(basedir)
-
             activate(locale)
             catalog, plural = get_javascript_catalog(locale, domain, packages)
             response = render_javascript_catalog(catalog, plural)
 
-            with io.open(jsfile, "w", encoding="utf-8") as fp:
+            with open_file_for_writing(locale) as fp:
                 fp.write(force_text(response.content))
