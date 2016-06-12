@@ -21,6 +21,17 @@ Choose the one that best fits your needs and/or taste.
 
 See `static files management`_ for more information.
 
+Once setup is in place, run the :djadmin:`compilejs18n` command to
+compile/update the Javascript catalog files followed by the
+:djadmin:`collectstatic` command to generate the static files::
+
+    # compile/update Javascript catalog files...
+    $ python manage.py compilejsi18n
+
+    # then, collect static files.
+    $ python manage.py collectstatic
+
+
 .. _static files management: http://django.readthedocs.org/en/1.6.x/ref/contrib/staticfiles/
 
 
