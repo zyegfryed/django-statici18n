@@ -13,7 +13,8 @@ Collect JavaScript catalog files in a single location.
 Some commonly used options are:
 
 ``-l LOCALE`` or ``--locale=LOCALE``
-    The locale to process. Default is to process all.
+    The locale to process. Default is to process all but if for some reason I18N
+    features are disabled, only `settings.LANGUAGE_CODE` will be processed.
 
 ``-d DOMAIN`` or ``--domain=DOMAIN``
     Override the gettext domain. By default, the command uses the ``djangojs``
