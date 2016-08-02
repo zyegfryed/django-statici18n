@@ -4,6 +4,9 @@ Changelog
 v.next (unreleased)
 -------------------
 
+* Added support for Django 1.9 and 1.10. This change also drops support for
+  Django 1.4, 1.5, 1.6 and 1.7 as they are not officially supported by the DSF
+  anymore (#18).
 * Added support for `USE_18N = False` (#19).
 
 v1.1.5 (2015 Aug 7)
