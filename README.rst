@@ -78,7 +78,7 @@ Installation
     You can modify the output path and more options by tweaking
     ``django-statici18n`` settings.
 
-**(Optionnal)**
+**(Optional)**
 
 The following step assumes you're using `django.contrib.staticfiles`_.
 

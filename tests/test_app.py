@@ -41,13 +41,13 @@ def test_compile_all(settings):
 
 
 @pytest.mark.usefixtures("cleandir")
-def test_compile_locale_not_exists(settings):
+def test_compile_locale_not_exists():
     out = six.StringIO()
     management.call_command('compilejsi18n', locale='ar', verbosity=1, stderr=out)
     assert out.getvalue() == ""
 
 
-def test_statici18n_templatetag(settings):
+def test_statici18n_templatetag():
     template = """
     {% load statici18n %}
     <script src="{% statici18n LANGUAGE_CODE %}"></script>
@@ -58,7 +58,7 @@ def test_statici18n_templatetag(settings):
 
 
 @pytest.mark.usefixtures("cleandir")
-def test_inlinei18n_templatetag(settings):
+def test_inlinei18n_templatetag():
     template = """
     {% load statici18n %}
     <script src="{% inlinei18n LANGUAGE_CODE %}"></script>
