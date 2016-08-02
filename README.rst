@@ -36,6 +36,13 @@ The main website for ``django-statici18n`` is
 .. _adding an overhead: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#note-on-performance
 .. _github.com/zyegfryed/django-statici18n: https://github.com/zyegfryed/django-statici18n
 
+Supported Django Versions
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+django-statici18n works with all the Django versions officially supported by the
+Django project. At the time of writing, these are the 1.8 (LTS), 1.9 and 1.10
+series.
+
 Installation
 ------------
 
