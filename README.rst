@@ -56,14 +56,21 @@ Installation
 
     python manage.py compilejsi18n
 
-4. Add the ``django.core.context_processors.i18n`` context processor to your
-   ``TEMPLATE_CONTEXT_PROCESSORS`` setting - should have already been set by
-   Django::
+4. Add the ``django.core.context_processors.i18n`` context processor to the
+   ``context_processors`` section for your backend in the ``TEMPLATES`` setting
+   — it should have already been set by Django::
 
-    TEMPLATE_CONTEXT_PROCESSORS = (
-      # ...
-      'django.core.context_processors.i18n',
-    )
+    TEMPLATES = [
+      {
+        # ...
+        'OPTIONS': {
+          'context_processors': {
+            # ...
+            'django.core.context_processors.i18n',
+          },
+        },
+      },
+    ]
 
 5. Edit your template(s) and replace the `dynamically generated script`_ by the
    statically generated one:
