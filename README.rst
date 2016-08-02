@@ -104,7 +104,7 @@ The following step assumes you're using `django.contrib.staticfiles`_.
     <script>{% inlinei18n LANGUAGE_CODE %}</script>
 
 .. _PyPI: http://pypi.python.org/pypi/django-statici18n
-.. _translated: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#message-files
-.. _compiled: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#compiling-message-files
-.. _dynamically generated script: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#using-the-javascript-translation-catalog
-.. _django.contrib.staticfiles: https://docs.djangoproject.com/en/1.6/ref/contrib/staticfiles/
+.. _translated: https://docs.djangoproject.com/en/1.10/topics/i18n/translation/#message-files
+.. _compiled: https://docs.djangoproject.com/en/1.10/topics/i18n/translation/#compiling-message-files
+.. _dynamically generated script: https://docs.djangoproject.com/en/1.10/topics/i18n/translation/#using-the-javascript-translation-catalog
+.. _django.contrib.staticfiles: https://docs.djangoproject.com/en/1.10/ref/contrib/staticfiles/
