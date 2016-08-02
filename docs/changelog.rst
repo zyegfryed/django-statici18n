@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v.next (unreleased)
+-------------------
+
+* Added support for `USE_18N = False` (#19).
+
 v1.1.5 (2015 Aug 7)
 -------------------
 

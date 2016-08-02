@@ -40,6 +40,26 @@ def test_compile_all(settings):
         assert '"Hello world!": "Bonjour \\u00e0 tous !"' in content
 
 
+@pytest.mark.parametrize('locale', ['en-us', 'en', 'de'])
+def test_compile_no_use_i18n(settings, locale):
+    """Tests compilation when `USE_I18N = False`.
+
+    In this scenario, only the `settings.LANGUAGE_CODE` locale is processed
+    (it defaults to `en-us` for Django projects).
+    """
+    settings.USE_I18N = False
+    settings.LANGUAGE_CODE = locale
+
+    out = six.StringIO()
+    management.call_command('compilejsi18n', verbosity=1, stdout=out)
+    out.seek(0)
+    lines = [l.strip() for l in out.readlines()]
+    assert len(lines) == 1
+    assert lines[0] == "processing language %s" % locale
+    assert os.path.exists(os.path.join(
+        settings.STATIC_ROOT, "jsi18n", locale, "djangojs.js"))
+
+
 @pytest.mark.usefixtures("cleandir")
 def test_compile_locale_not_exists():
     out = six.StringIO()

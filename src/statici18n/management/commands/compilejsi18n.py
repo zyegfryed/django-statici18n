@@ -25,7 +25,9 @@ else:
 class Command(NoArgsCommand):
     option_list = NoArgsCommand.option_list + (
         make_option('--locale', '-l', dest='locale',
-                    help="The locale to process. Default is to process all."),
+                    help="The locale to process. Default is to process all "
+                         "but if for some reason I18N features are disabled, "
+                         "only `settings.LANGUAGE_CODE` will be processed."),
         make_option('-d', '--domain',
                     dest='domain', default=settings.STATICI18N_DOMAIN,
                     help="Override the gettext domain. By default, "
@@ -55,6 +57,8 @@ class Command(NoArgsCommand):
 
         if locale is not None:
             languages = [locale]
+        elif not settings.USE_I18N:
+            languages = [settings.LANGUAGE_CODE]
         else:
             languages = [to_locale(lang_code)
                          for (lang_code, lang_name) in settings.LANGUAGES]
