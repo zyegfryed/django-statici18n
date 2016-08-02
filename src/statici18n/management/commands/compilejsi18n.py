@@ -7,19 +7,11 @@ from optparse import make_option
 from django.core.management.base import NoArgsCommand
 from django.utils.translation import to_locale, activate
 from django.utils.encoding import force_text
+from django.views.i18n import (get_javascript_catalog,
+                               render_javascript_catalog)
 
 from statici18n.conf import settings
 from statici18n.utils import get_filename
-
-import django
-if django.VERSION >= (1, 6):
-    # Django >= 1.6
-    from django.views.i18n import (get_javascript_catalog,
-                                   render_javascript_catalog)
-else:
-    # Django <= 1.5
-    from statici18n.compat import (get_javascript_catalog,
-                                   render_javascript_catalog)
 
 
 class Command(NoArgsCommand):
