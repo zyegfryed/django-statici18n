@@ -86,3 +86,4 @@ def test_inlinei18n_templatetag():
     template = get_template_from_string(template)
     rendered = template.render(Context({'LANGUAGE_CODE': 'fr'})).strip()
     assert 'var django = globals.django || (globals.django = {});' in rendered
+    assert '&quot;' not in rendered
