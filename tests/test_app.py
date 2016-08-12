@@ -2,22 +2,21 @@ import io
 import os
 import pytest
 
+import django
 from django.core import management
-from django.template import Context
+from django.template import Context, Engine
 from django.utils import six
 
-try:
-    # Django >= 1.8
-    from django.template import Engine
 
-    def get_template_from_string(template_code):
-        return Engine().from_string(template_code)
-
-except ImportError:
-    # Django < 1.8
-    from django.template import loader
-
-    get_template_from_string = loader.get_template_from_string
+def get_template_from_string(template_code):
+    engine_options = {}
+    if django.VERSION >= (1, 9):
+        engine_options = {
+            'libraries': {
+                'statici18n': 'statici18n.templatetags.statici18n',
+            },
+        }
+    return Engine(**engine_options).from_string(template_code)
 
 
 @pytest.mark.usefixtures("cleandir")

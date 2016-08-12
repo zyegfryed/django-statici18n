@@ -4,6 +4,7 @@
 *.egg-info
 *.pyc
 *.egg
+*.swp
 pip-log.txt
 /htmlcov
 /cover

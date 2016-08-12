@@ -1,5 +1,5 @@
 -r requirements-test.txt
 
-tox==1.9.0
-virtualenv==1.10.1
-wheel==0.24.0
+tox==2.3.1
+virtualenv<14.0.0
+wheel==0.29.0

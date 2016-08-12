@@ -36,6 +36,13 @@ The main website for ``django-statici18n`` is
 .. _adding an overhead: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#note-on-performance
 .. _github.com/zyegfryed/django-statici18n: https://github.com/zyegfryed/django-statici18n
 
+Supported Django Versions
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+django-statici18n works with all the Django versions officially supported by the
+Django project. At the time of writing, these are the 1.8 (LTS), 1.9 and 1.10
+series.
+
 Installation
 ------------
 
@@ -56,14 +63,21 @@ Installation
 
     python manage.py compilejsi18n
 
-4. Add the ``django.core.context_processors.i18n`` context processor to your
-   ``TEMPLATE_CONTEXT_PROCESSORS`` setting - should have already been set by
-   Django::
+4. Add the ``django.core.context_processors.i18n`` context processor to the
+   ``context_processors`` section for your backend in the ``TEMPLATES`` setting
+   — it should have already been set by Django::
 
-    TEMPLATE_CONTEXT_PROCESSORS = (
-      # ...
-      'django.core.context_processors.i18n',
-    )
+    TEMPLATES = [
+      {
+        # ...
+        'OPTIONS': {
+          'context_processors': {
+            # ...
+            'django.core.context_processors.i18n',
+          },
+        },
+      },
+    ]
 
 5. Edit your template(s) and replace the `dynamically generated script`_ by the
    statically generated one:
@@ -97,7 +111,7 @@ The following step assumes you're using `django.contrib.staticfiles`_.
     <script>{% inlinei18n LANGUAGE_CODE %}</script>
 
 .. _PyPI: http://pypi.python.org/pypi/django-statici18n
-.. _translated: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#message-files
-.. _compiled: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#compiling-message-files
-.. _dynamically generated script: https://docs.djangoproject.com/en/1.6/topics/i18n/translation/#using-the-javascript-translation-catalog
-.. _django.contrib.staticfiles: https://docs.djangoproject.com/en/1.6/ref/contrib/staticfiles/
+.. _translated: https://docs.djangoproject.com/en/1.10/topics/i18n/translation/#message-files
+.. _compiled: https://docs.djangoproject.com/en/1.10/topics/i18n/translation/#compiling-message-files
+.. _dynamically generated script: https://docs.djangoproject.com/en/1.10/topics/i18n/translation/#using-the-javascript-translation-catalog
+.. _django.contrib.staticfiles: https://docs.djangoproject.com/en/1.10/ref/contrib/staticfiles/
