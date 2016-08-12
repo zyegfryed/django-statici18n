@@ -80,7 +80,7 @@ def test_statici18n_templatetag():
 def test_inlinei18n_templatetag():
     template = """
     {% load statici18n %}
-    <script src="{% inlinei18n LANGUAGE_CODE %}"></script>
+    <script>{% inlinei18n LANGUAGE_CODE %}</script>
     """
     management.call_command('compilejsi18n')
     template = get_template_from_string(template)
