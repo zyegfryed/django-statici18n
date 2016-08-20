@@ -4,12 +4,13 @@ Changelog
 v.next (unreleased)
 -------------------
 
-* Added support for JSON format in command-line based catalog generation.
-  Thanks @rarguelloF.
-* Added support for Django 1.9 and 1.10. This change also drops support for
-  Django 1.4, 1.5, 1.6 and 1.7 as they are not officially supported by the DSF
-  anymore (#18).
-* Added support for `USE_18N = False` (#19).
+* #17: Mark inlinei18n output as safe (thanks @quantum5)
+* #23: Added support for JSON format in command-line based catalog generation
+  (thanks @rarguelloF)
+* #18: Added support for Django 1.9 and 1.10; this change also drops
+  support for Django 1.4, 1.5, 1.6 and 1.7 as they are not officially
+  supported by the DSF anymore (thanks @julen)
+* #19: Added support for `USE_18N = False` (thanks @julen)
 
 v1.1.5 (2015 Aug 7)
 -------------------
