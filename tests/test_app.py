@@ -94,9 +94,10 @@ def test_statici18n_templatetag():
 def test_inlinei18n_templatetag():
     template = """
     {% load statici18n %}
-    <script src="{% inlinei18n LANGUAGE_CODE %}"></script>
+    <script>{% inlinei18n LANGUAGE_CODE %}</script>
     """
     management.call_command('compilejsi18n')
     template = get_template_from_string(template)
     rendered = template.render(Context({'LANGUAGE_CODE': 'fr'})).strip()
     assert 'var django = globals.django || (globals.django = {});' in rendered
+    assert '&quot;' not in rendered

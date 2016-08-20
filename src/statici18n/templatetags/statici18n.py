@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 import os
 from django import template
+from django.utils.safestring import mark_safe
 
 try:
     from django.contrib.staticfiles.templatetags.staticfiles import static
@@ -41,4 +42,4 @@ def inlinei18n(locale):
     Behind the scenes, this is a thin wrapper around staticfiles's configred
     storage
     """
-    return staticfiles_storage.open(get_path(locale)).read()
+    return mark_safe(staticfiles_storage.open(get_path(locale)).read())
