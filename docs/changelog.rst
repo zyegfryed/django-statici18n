@@ -4,6 +4,8 @@ Changelog
 v.next (unreleased)
 -------------------
 
+* Added support for JSON format in command-line based catalog generation.
+  Thanks @rarguelloF.
 * Added support for Django 1.9 and 1.10. This change also drops support for
   Django 1.4, 1.5, 1.6 and 1.7 as they are not officially supported by the DSF
   anymore (#18).

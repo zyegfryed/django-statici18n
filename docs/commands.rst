@@ -29,6 +29,12 @@ Some commonly used options are:
     of :attr:`~django.conf.settings.STATICI18N_ROOT` and
     :attr:`~django.conf.settings.STATICI18N_OUTPUT_DIR`.
 
+``-f OUTPUT_FORMAT`` or ``--format=OUTPUT_FORMAT``
+    Format of the output catalog. Options are:
+        * ``js``,
+        * ``json``.
+    Defaults to ``js``.
+
 For a full list of options, refer to the ``compilejsi18n`` management command
 help by running::
 
