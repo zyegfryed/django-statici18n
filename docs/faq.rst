@@ -143,7 +143,7 @@ Then update your settings accordingly. Following the previous example::
 
 
 Can I use the generated catalog with RequireJS_?
------------------------------------------------
+------------------------------------------------
 
 Yes. You just need some boilerplate configuration to export the object
 reference, like the following::
