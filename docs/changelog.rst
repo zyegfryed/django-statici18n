@@ -1,8 +1,8 @@
 Changelog
 =========
 
-v.next (unreleased)
--------------------
+v.1.2.0 (2016 Aug 20)
+---------------------
 
 * #17: Mark inlinei18n output as safe (thanks @quantum5)
 * #23: Added support for JSON format in command-line based catalog generation
