@@ -4,15 +4,15 @@ from statici18n import utils
 
 
 def test_default_filename_with_language():
-    filename = utils.get_filename('en', 'djangojs', 'js')
+    filename = utils.get_filename('en', 'djangojs')
     assert filename == 'en/djangojs.js'
 
-    filename = utils.get_filename('en-us', 'djangojs', 'js')
+    filename = utils.get_filename('en-us', 'djangojs')
     assert filename == 'en-us/djangojs.js'
 
 
 def test_default_filename_with_locale():
-    filename = utils.get_filename('en_GB', 'djangojs', 'js')
+    filename = utils.get_filename('en_GB', 'djangojs')
     assert filename == 'en-gb/djangojs.js'
 
 
