@@ -59,6 +59,20 @@ def test_compile_no_use_i18n(settings, locale):
         settings.STATIC_ROOT, "jsi18n", locale, "djangojs.js"))
 
 
+@pytest.mark.parametrize('locale', ['en'])
+@pytest.mark.parametrize('output_format', ['js', 'json'])
+def test_compile_with_output_format(settings, locale, output_format):
+    out = six.StringIO()
+    management.call_command('compilejsi18n', verbosity=1, stdout=out,
+                            locale=locale, outputformat=output_format)
+    out.seek(0)
+    lines = [l.strip() for l in out.readlines()]
+    assert len(lines) == 1
+    assert lines[0] == "processing language %s" % locale
+    assert os.path.exists(os.path.join(
+        settings.STATIC_ROOT, "jsi18n", locale, "djangojs.%s" % output_format))
+
+
 @pytest.mark.usefixtures("cleandir")
 def test_compile_locale_not_exists():
     out = six.StringIO()
