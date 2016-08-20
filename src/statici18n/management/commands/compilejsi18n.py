@@ -33,7 +33,8 @@ class Command(BaseCommand):
                             help="A list of packages to check for translations. "
                             "Default is 'django.conf'. Use multiple times to "
                             "add more."),
-        parser.add_argument('-o', '--output', dest='outputdir', metavar='OUTPUT_DIR',
+        parser.add_argument('-o', '--output', dest='outputdir',
+                            metavar='OUTPUT_DIR',
                             help="Output directory to store generated catalogs. "
                             "Defaults to static/jsi18n.")
         parser.add_argument('-f', '--format', dest='outputformat',
@@ -61,7 +62,8 @@ class Command(BaseCommand):
         return force_text(json.dumps(data, ensure_ascii=False))
 
     def _create_output(self, outputdir, outputformat, locale, domain, packages):
-        outputfile = os.path.join(outputdir, get_filename(locale, domain, outputformat))
+        outputfile = os.path.join(outputdir, get_filename(locale, domain,
+                                                          outputformat))
         basedir = os.path.dirname(outputfile)
         if not os.path.isdir(basedir):
             os.makedirs(basedir)
