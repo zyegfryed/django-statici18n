@@ -21,7 +21,7 @@ Choose the one that best fits your needs and/or taste.
 
 See `static files management`_ for more information.
 
-Once setup is in place, run the :djadmin:`compilejs18n` command to
+Once setup is in place, run the :djadmin:`compilejsi18n` command to
 compile/update the Javascript catalog files followed by the
 :djadmin:`collectstatic` command to generate the static files::
 
