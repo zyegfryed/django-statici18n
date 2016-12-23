@@ -5,7 +5,7 @@ import os
 import json
 
 from django.core.management.base import BaseCommand
-from django.utils.translation import activate
+from django.utils.translation import to_locale, activate
 from django.utils.encoding import force_text
 from django.views.i18n import (get_javascript_catalog,
                                render_javascript_catalog,
@@ -90,6 +90,9 @@ class Command(BaseCommand):
             languages = [locale]
         elif not settings.USE_I18N:
             languages = [settings.LANGUAGE_CODE]
+        elif django.VERSION < (1, 10):
+            languages = [to_locale(lang_code)
+                         for (lang_code, lang_name) in settings.LANGUAGES]
         else:
             languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
 

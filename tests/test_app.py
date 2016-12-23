@@ -44,7 +44,7 @@ def test_compile_all(settings):
     with io.open(filename, "r", encoding="utf-8") as fp:
         content = fp.read()
         assert "django.catalog" in content
-        assert '"Hello world!": "\u5927\u5bb6\u597d\uff01"' in content
+        assert '"Hello world!": "\\u5927\\u5bb6\\u597d\\uff01"' in content
 
 
 @pytest.mark.parametrize('locale', ['en-us', 'en', 'de'])
