@@ -91,8 +91,7 @@ class Command(BaseCommand):
         elif not settings.USE_I18N:
             languages = [settings.LANGUAGE_CODE]
         else:
-            languages = [to_locale(lang_code)
-                         for (lang_code, lang_name) in settings.LANGUAGES]
+            languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
 
         if outputdir is None:
             outputdir = os.path.join(settings.STATICI18N_ROOT,
