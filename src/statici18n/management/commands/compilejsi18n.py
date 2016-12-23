@@ -4,6 +4,7 @@ import io
 import os
 import json
 
+import django
 from django.core.management.base import BaseCommand
 from django.utils.translation import to_locale, activate
 from django.utils.encoding import force_text
