@@ -19,7 +19,7 @@ def get_template_from_string(template_code):
     return Engine(**engine_options).from_string(template_code)
 
 
-#@pytest.mark.usefixtures("cleandir")
+@pytest.mark.usefixtures("cleandir")
 def test_compile_all(settings):
     out = six.StringIO()
     management.call_command('compilejsi18n', verbosity=1, stdout=out)

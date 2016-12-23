@@ -5,7 +5,7 @@ import os
 import json
 
 from django.core.management.base import BaseCommand
-from django.utils.translation import to_locale, activate
+from django.utils.translation import activate
 from django.utils.encoding import force_text
 from django.views.i18n import (get_javascript_catalog,
                                render_javascript_catalog,
