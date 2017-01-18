@@ -4,6 +4,7 @@ import io
 import os
 import json
 
+import django
 from django.core.management.base import BaseCommand
 from django.utils.translation import to_locale, activate
 from django.utils.encoding import force_text
@@ -90,9 +91,11 @@ class Command(BaseCommand):
             languages = [locale]
         elif not settings.USE_I18N:
             languages = [settings.LANGUAGE_CODE]
-        else:
+        elif django.VERSION < (1, 10):
             languages = [to_locale(lang_code)
                          for (lang_code, lang_name) in settings.LANGUAGES]
+        else:
+            languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
 
         if outputdir is None:
             outputdir = os.path.join(settings.STATICI18N_ROOT,

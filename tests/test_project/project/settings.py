@@ -61,6 +61,7 @@ LANGUAGE_CODE = 'en-us'
 LANGUAGES = (
     ('en', 'English'),
     ('fr', 'French'),
+    ('zh-hans', 'Simplified Chinese'),
 )
 
 LOCALE_PATHS = (

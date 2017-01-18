@@ -25,7 +25,7 @@ def test_compile_all(settings):
     management.call_command('compilejsi18n', verbosity=1, stdout=out)
     out.seek(0)
     lines = [l.strip() for l in out.readlines()]
-    assert len(lines) == 2
+    assert len(lines) == 3
     assert lines[0] == "processing language en"
     assert lines[1] == "processing language fr"
     assert os.path.exists(os.path.join(
@@ -37,6 +37,14 @@ def test_compile_all(settings):
         content = fp.read()
         assert "django.catalog" in content
         assert '"Hello world!": "Bonjour \\u00e0 tous !"' in content
+
+    filename = os.path.join(
+        settings.STATICI18N_ROOT, "jsi18n", "zh-hans", "djangojs.js")
+    assert os.path.exists(filename)
+    with io.open(filename, "r", encoding="utf-8") as fp:
+        content = fp.read()
+        assert "django.catalog" in content
+        assert '"Hello world!": "\\u5927\\u5bb6\\u597d\\uff01"' in content
 
 
 @pytest.mark.parametrize('locale', ['en-us', 'en', 'de'])
