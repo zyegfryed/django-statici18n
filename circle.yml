@@ -1,0 +1,4 @@
+---
+machine:
+  post:
+    - pyenv global 2.7.12 3.2.6 3.3.6 3.4.3 3.5.2
