@@ -3,3 +3,7 @@
 machine:
   post:
     - pyenv global 3.5.2 3.4.3 3.3.6 3.2.6 2.7.12
+dependencies:
+  override:
+    - pip --version
+    - pip install tox
