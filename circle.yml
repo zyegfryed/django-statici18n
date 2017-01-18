@@ -1,7 +1,5 @@
 ---
 # Use Ubuntu 14.04 (Trusty) image
 machine:
-  python:
-    version: 2.7.12
   post:
-    - pyenv global 2.7.12 3.2.6 3.3.6 3.4.3 3.5.2
+    - pyenv global 3.5.2 3.4.3 3.3.6 3.2.6 2.7.12
