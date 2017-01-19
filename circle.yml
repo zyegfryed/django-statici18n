@@ -5,4 +5,7 @@ machine:
     - pyenv global 2.7.12 3.2.6 3.3.6 3.4.3 3.5.2
 dependencies:
   override:
+    # Downgrade virtualenv version due to Python 3.2 drop support
+    # in virtualenv >= 14.0.0
+    - pip install --upgrade virtualenv==13.1.2
     - pip install tox
