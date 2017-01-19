@@ -1,13 +1,19 @@
 Changelog
 =========
 
-v.1.2.1 (2016 Aug 20)
----------------------
+v1.3.0 (2017 Jan 19)
+--------------------
+
+* Pass language name instead of locale name on Django 1.10 (thanks @quantum5)
+* Fix circle-ci builds
+
+v1.2.1 (2016 Aug 20)
+--------------------
 
 * Fix Django links to use version 1.10
 
-v.1.2.0 (2016 Aug 20)
----------------------
+v1.2.0 (2016 Aug 20)
+--------------------
 
 * #17: Mark inlinei18n output as safe (thanks @quantum5)
 * #23: Added support for JSON format in command-line based catalog generation
