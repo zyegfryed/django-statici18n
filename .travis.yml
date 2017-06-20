@@ -30,7 +30,7 @@ before_install:
   - shtool version -i r dj_version.txt
   # Required to support Python 3.2, should be able to be removed
   # when support for Django 1.8 / Python 3.2 is dropped.
-  - pip install pip<8 setuptools<30 virtualenv<14
+  - pip install "pip<8" "setuptools<30" "virtualenv<14"
 install:
   - NEW_DJANGO_VERSION=$(shtool version -d short dj_version.txt)
   - pip install -q "Django>=${DJANGO_VERSION},<${NEW_DJANGO_VERSION}"
