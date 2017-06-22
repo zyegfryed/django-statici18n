@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.4.0 (2017 Jun 22)
+--------------------
+
+* Add Django 1.11 support (thanks @bmedx)
+
 v1.3.0 (2017 Jan 19)
 --------------------
 
