@@ -5,4 +5,4 @@ class StaticI18NConfig(AppConfig):
     name = 'statici18n'
 
     def ready(self):
-        from . import conf
+        from . import conf  # noqa
