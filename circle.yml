@@ -2,7 +2,7 @@
 # Use Ubuntu 14.04 (Trusty) image
 machine:
   post:
-    - pyenv global 2.7.12 3.2.6 3.3.6 3.4.3 3.5.2
+    - pyenv global 2.7.14 3.2.6 3.3.6 3.4.7 3.5.4
 dependencies:
   override:
     # Downgrade virtualenv version due to Python 3.2 drop support
