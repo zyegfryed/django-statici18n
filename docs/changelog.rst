@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v1.5.0 (2017 Dec 08)
+--------------------
+
+* Load statici18n conf via Django's `AppConfig` (thanks @julen)
+
 v1.4.0 (2017 Jun 22)
 --------------------
 
