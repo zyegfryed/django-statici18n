@@ -2,4 +2,3 @@
 
 tox==2.3.1
 virtualenv<14.0.0
-wheel==0.29.0
