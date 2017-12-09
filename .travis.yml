@@ -6,41 +6,39 @@ python:
   - "3.4"
   - "3.5"
 env:
-  - DJANGO_VERSION=1.8
-  - DJANGO_VERSION=1.9
-  - DJANGO_VERSION=1.10
-  - DJANGO_VERSION=1.11
+  - DJANGO_VERSION=1.8.18
+  - DJANGO_VERSION=1.9.13
+  - DJANGO_VERSION=1.10.8
+  - DJANGO_VERSION=1.11.8
 matrix:
   exclude:
     - python: "3.2"
-      env: DJANGO_VERSION=1.9
+      env: DJANGO_VERSION=1.9.13
     - python: "3.3"
-      env: DJANGO_VERSION=1.9
+      env: DJANGO_VERSION=1.9.13
     - python: "3.2"
-      env: DJANGO_VERSION=1.10
+      env: DJANGO_VERSION=1.10.8
     - python: "3.3"
-      env: DJANGO_VERSION=1.10
+      env: DJANGO_VERSION=1.10.8
     - python: "3.3"
-      env: DJANGO_VERSION=1.11
+      env: DJANGO_VERSION=1.11.8
     - python: "3.2"
-      env: DJANGO_VERSION=1.11
+      env: DJANGO_VERSION=1.11.8
 before_install:
-  - sudo apt-get install -y shtool
-  - shtool version -s "${DJANGO_VERSION}.0" dj_version.txt
-  - shtool version -i r dj_version.txt
-  # Required to support Python 3.2, should be able to be removed
-  # when support for Django 1.8 / Python 3.2 is dropped.
-  - pip install "pip<8" "setuptools<30" "virtualenv<14"
+  # Downgrade virtualenv version due to Python 3.2 drop support
+  # in virtualenv >= 14.0.0
+  - pip install --upgrade virtualenv==13.1.2
 install:
-  - NEW_DJANGO_VERSION=$(shtool version -d short dj_version.txt)
-  - pip install -q "Django>=${DJANGO_VERSION},<${NEW_DJANGO_VERSION}"
-  - pip install -q -e . -r requirements-test.txt
+  - pip install -q Django==$DJANGO_VERSION
+  - pip install -q -r requirements-test.txt
+  - pip install -q -e .
   - pip install coveralls
 before_script:
   - make lint
 script:
   - export PYTHONPATH=$PYTHONPATH:$(pwd)/tests/test_project
   - export DJANGO_SETTINGS_MODULE=project.settings
-  - make coverage
+  - make test
 after_success:
+  - make coverage
   - coveralls
