@@ -8,12 +8,18 @@ import django
 from django.core.management.base import BaseCommand
 from django.utils.translation import to_locale, activate
 from django.utils.encoding import force_text
-from django.views.i18n import (get_javascript_catalog,
-                               render_javascript_catalog,
-                               get_formats)
 
 from statici18n.conf import settings
 from statici18n.utils import get_filename
+
+if django.VERSION < (2, 0):
+    from django.views.i18n import (get_javascript_catalog,
+                               render_javascript_catalog,
+                               get_formats)
+else:
+    from django.views.i18n import (get_formats,
+                                JavaScriptCatalog,
+                                JSONCatalog)
 
 
 class Command(BaseCommand):
@@ -46,21 +52,31 @@ class Command(BaseCommand):
 
     def _create_javascript_catalog(self, locale, domain, packages):
         activate(locale)
-        catalog, plural = get_javascript_catalog(locale, domain, packages)
-        response = render_javascript_catalog(catalog, plural)
-
+        if django.VERSION < (2, 0):
+            catalog, plural = get_javascript_catalog(locale, domain, packages)
+            response = render_javascript_catalog(catalog, plural)
+        else:
+            catalog = JavaScriptCatalog()
+            # we are passing None as the request, as the request object is currently not used by django
+            response = catalog.get(self, None, domain=domain, packages=packages)
         return force_text(response.content)
 
     def _create_json_catalog(self, locale, domain, packages):
         activate(locale)
-        catalog, plural = get_javascript_catalog(locale, domain, packages)
-        data = {
-            'catalog': catalog,
-            'formats': get_formats(),
-            'plural': plural,
-        }
+        if django.VERSION < (2, 0):
+            catalog, plural = get_javascript_catalog(locale, domain, packages)
+            data = {
+                'catalog': catalog,
+                'formats': get_formats(),
+                'plural': plural,
+            }
 
-        return force_text(json.dumps(data, ensure_ascii=False))
+            return force_text(json.dumps(data, ensure_ascii=False))
+        else:
+            catalog = JSONCatalog()
+            # we are passing None as the request, as the request object is currently not used by django
+            response = catalog.get(self, None, domain=domain, packages=packages)
+            return force_text(response.content)
 
     def _create_output(self, outputdir, outputformat, locale, domain, packages):
         outputfile = os.path.join(outputdir, get_filename(locale, domain,
