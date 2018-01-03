@@ -57,6 +57,8 @@ class Command(BaseCommand):
             response = render_javascript_catalog(catalog, plural)
         else:
             catalog = JavaScriptCatalog()
+            print(packages)
+            packages = None if packages == 'django.conf' else packages
             # we are passing None as the request, as the request object is currently not used by django
             response = catalog.get(self, None, domain=domain, packages=packages)
         return force_text(response.content)
@@ -74,6 +76,7 @@ class Command(BaseCommand):
             return force_text(json.dumps(data, ensure_ascii=False))
         else:
             catalog = JSONCatalog()
+            packages = None if packages == 'django.conf' else packages
             # we are passing None as the request, as the request object is currently not used by django
             response = catalog.get(self, None, domain=domain, packages=packages)
             return force_text(response.content)
