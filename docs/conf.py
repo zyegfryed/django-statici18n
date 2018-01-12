@@ -32,7 +32,8 @@ extensions = ["djangodocs", "sphinx.ext.intersphinx"]
 
 intersphinx_mapping = {
     'python': ('http://docs.python.org/2.7', None),
-    'django': ('https://docs.djangoproject.com/en/1.11/', None),
+    'django': ('https://docs.djangoproject.com/en/1.11/',
+               'https://docs.djangoproject.com/en/1.11/_objects'),
 }
 
 # Add any paths that contain templates here, relative to this directory.
