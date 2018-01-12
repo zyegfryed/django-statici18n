@@ -33,6 +33,7 @@ Some commonly used options are:
     Format of the output catalog. Options are:
         * ``js``,
         * ``json``.
+
     Defaults to ``js``.
 
 For a full list of options, refer to the ``compilejsi18n`` management command
