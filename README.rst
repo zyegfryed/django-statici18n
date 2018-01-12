@@ -14,14 +14,14 @@ files.
 Overview
 --------
 
-When dealing with internationalization in JavaScript code, Django provides the
-`javascript_catalog view`_ which sends out a JavaScript code library with
+When dealing with internationalization in JavaScript code, Django provides
+the `JSONCatalog view`_ which sends out a JavaScript code library with
 functions that mimic the gettext interface, plus an array of translation
 strings.
 
 At first glance, it works well and everything is fine. But, because
-`javascript_catalog view`_ is generating JavaScript catalog dynamically on
-each request, it's `adding an overhead`_ that can be an issue with site growth.
+`JSONCatalog view`_ is generating JavaScript catalog dynamically on each
+request, it's `adding an overhead`_ that can be an issue with site growth.
 
 That's what ``django-statici18n`` is for:
 
@@ -32,7 +32,7 @@ That's what ``django-statici18n`` is for:
 The main website for ``django-statici18n`` is
 `github.com/zyegfryed/django-statici18n`_ where you can also file tickets.
 
-.. _javascript_catalog view: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#module-django.views.i18n
+.. _JSONCatalog view: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#the-jsoncatalog-view
 .. _adding an overhead: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#note-on-performance
 .. _github.com/zyegfryed/django-statici18n: https://github.com/zyegfryed/django-statici18n
 
