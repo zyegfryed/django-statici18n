@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v1.6.0 (2018 Jan 12)
+--------------------
+
+* Add Django 2.0 support (thanks Martin Pauly)
+* Drop Python 3.2 support
+* Add Python 3.6 support
+
 v1.5.0 (2017 Dec 08)
 --------------------
 
