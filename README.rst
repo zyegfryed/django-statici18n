@@ -32,8 +32,8 @@ That's what ``django-statici18n`` is for:
 The main website for ``django-statici18n`` is
 `github.com/zyegfryed/django-statici18n`_ where you can also file tickets.
 
-.. _javascript_catalog view: https://docs.djangoproject.com/en/1.10/topics/i18n/translation/#module-django.views.i18n
-.. _adding an overhead: https://docs.djangoproject.com/en/1.10/topics/i18n/translation/#note-on-performance
+.. _javascript_catalog view: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#module-django.views.i18n
+.. _adding an overhead: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#note-on-performance
 .. _github.com/zyegfryed/django-statici18n: https://github.com/zyegfryed/django-statici18n
 
 Supported Django Versions
@@ -111,7 +111,7 @@ The following step assumes you're using `django.contrib.staticfiles`_.
     <script>{% inlinei18n LANGUAGE_CODE %}</script>
 
 .. _PyPI: http://pypi.python.org/pypi/django-statici18n
-.. _translated: https://docs.djangoproject.com/en/1.10/topics/i18n/translation/#message-files
-.. _compiled: https://docs.djangoproject.com/en/1.10/topics/i18n/translation/#compiling-message-files
-.. _dynamically generated script: https://docs.djangoproject.com/en/1.10/topics/i18n/translation/#using-the-javascript-translation-catalog
-.. _django.contrib.staticfiles: https://docs.djangoproject.com/en/1.10/ref/contrib/staticfiles/
+.. _translated: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#message-files
+.. _compiled: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#compiling-message-files
+.. _dynamically generated script: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#using-the-javascript-translation-catalog
+.. _django.contrib.staticfiles: https://docs.djangoproject.com/en/1.11/ref/contrib/staticfiles/
