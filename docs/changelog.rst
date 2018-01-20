@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v1.6.1 (2018 Jan 20)
+--------------------
+
+* Use ASCII character instead of UTF-8 one to fix build with Python
+  3 (thanks @sunpoet)
+
 v1.6.0 (2018 Jan 12)
 --------------------
 
