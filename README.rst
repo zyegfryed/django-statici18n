@@ -65,7 +65,7 @@ Installation
 
 4. Add the ``django.core.context_processors.i18n`` context processor to the
    ``context_processors`` section for your backend in the ``TEMPLATES`` setting
-   — it should have already been set by Django::
+   - it should have already been set by Django::
 
     TEMPLATES = [
       {
