@@ -164,12 +164,12 @@ reference, like the following::
                             exports: 'django'
                     },
             }
-    }
+    })
 
     // Usage
     require(["jquery", "jsi18n"], function($, jsi18n) {
         console.log(jsi18n.gettext('Internationalization is fun !'));
             // > "L’internationalisation, c'est cool !"
-    }
+    })
 
 .. _RequireJS: http://requirejs.org/
