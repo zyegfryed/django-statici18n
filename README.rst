@@ -79,13 +79,6 @@ Installation
       },
     ]
 
-.. note::
-
-    For Django versions **< 1.8**, use the
-    ``django.core.context_processors.i18n`` context processor instead. For
-    more information, refer to the `Upgrading templates to Django 1.8`_
-    documentation.
-
 5. Edit your template(s) and replace the `dynamically generated script`_ by the
    statically generated one:
 
