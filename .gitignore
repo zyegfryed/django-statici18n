@@ -11,3 +11,5 @@ pip-log.txt
 /build
 /dist
 /docs/_build
+.cache
+.pytest_cache
