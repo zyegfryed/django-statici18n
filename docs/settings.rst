@@ -56,10 +56,15 @@ Settings
     * ``domain``: a string representation of the gettext domain used to check
       for translations
 
-    By default, the function returns the path ``'<language_code>/<domain>.js'``.
+    By default, the function returns the path ``'<locale>/<domain>.js'``.
 
     The final filename is resulted by joining :attr:`STATICI18N_ROOT`,
     :attr:`STATICI18N_OUTPUT_DIR` and :attr:`STATICI18N_FILENAME_FUNCTION`.
 
-    For example, with default settings in place and ``STATIC_ROOT = 'static'``, the JavaScript catalog
-    generated for the ``en_GB`` locale is: ``'static/jsi18n/en-gb/djangojs.js'``
+    For example, with default settings in place and ``STATIC_ROOT = 'static'``,
+    the JavaScript catalog generated for the ``en_GB`` locale is:
+    ``'static/jsi18n/en_GB/djangojs.js'``.
+
+    Use the legacy function ``statici18n.utils.legacy_filename`` to
+    generate a filename with the language code derived from the
+    ``django.utils.translation.trans_real import to_language``.

@@ -62,6 +62,7 @@ LANGUAGES = (
     ('en', 'English'),
     ('fr', 'French'),
     ('zh-hans', 'Simplified Chinese'),
+    ('ko-KR', 'Korean'),
 )
 
 LOCALE_PATHS = (

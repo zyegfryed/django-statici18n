@@ -28,6 +28,10 @@ def get_filename(*args, **kwargs):
     return _filename_func(*args, **kwargs)
 
 
-def default_filename(locale, domain, output_format='js'):
+def default_filename(language_code, domain, output_format='js'):
+    return os.path.join(language_code, '%s.%s' % (domain, output_format))
+
+
+def legacy_filename(locale, domain, output_format='js'):
     from django.utils.translation.trans_real import to_language
     return os.path.join(to_language(locale), '%s.%s' % (domain, output_format))

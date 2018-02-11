@@ -3,28 +3,26 @@ import pytest
 from statici18n import utils
 
 
-def test_default_filename_with_language():
-    filename = utils.get_filename('en', 'djangojs')
-    assert filename == 'en/djangojs.js'
-
-    filename = utils.get_filename('en-us', 'djangojs')
-    assert filename == 'en-us/djangojs.js'
+@pytest.mark.parametrize('locale', ['en', 'zh-hans', 'ko-KR'])
+def test_default_filename(locale):
+    filename = utils.get_filename(locale, 'djangojs')
+    assert filename == '%s/djangojs.js' % locale
 
 
-def test_default_filename_with_locale():
+@pytest.mark.parametrize('fmt', ['js', 'json', 'yaml'])
+def test_default_filename_with_outputformat(fmt):
+    filename = utils.get_filename('en', 'djangojs', fmt)
+    assert filename == 'en/djangojs.%s' % fmt
+
+
+def test_legacy_filename(settings):
+    settings.STATICI18N_FILENAME_FUNCTION = 'statici18n.utils.legacy_filename'
+
     filename = utils.get_filename('en_GB', 'djangojs')
     assert filename == 'en-gb/djangojs.js'
 
-
-def test_default_filename_with_outputformat():
-    filename = utils.get_filename('en', 'djangojs', 'js')
-    assert filename == 'en/djangojs.js'
-
-    filename = utils.get_filename('en', 'djangojs', 'json')
-    assert filename == 'en/djangojs.json'
-
-    filename = utils.get_filename('en', 'djangojs', 'yaml')
-    assert filename == 'en/djangojs.yaml'
+    filename = utils.get_filename('zh-Hans', 'djangojs')
+    assert filename == 'zh-hans/djangojs.js'
 
 
 def custom_func(locale, domain):
