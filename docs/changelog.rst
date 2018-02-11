@@ -1,6 +1,19 @@
 Changelog
 =========
 
+v1.7.0 (2018 Feb 11)
+--------------------
+
+* Fix documentation (thanks @philipbelesky and @pre101)
+
+.. warning::
+
+   The following changes are backward-incompatible with the previous release.
+
+* Use the plain locale for filename by default (thanks @genonfire)
+  For legacy behavior, set ``STATICI18N_FILENAME_FUNCTION`` setting with
+  ``'statici18n.utils.legacy_filename'``.
+
 v1.6.1 (2018 Jan 20)
 --------------------
 
