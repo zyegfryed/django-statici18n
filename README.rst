@@ -63,7 +63,7 @@ Installation
 
     python manage.py compilejsi18n
 
-4. Add the ``django.core.context_processors.i18n`` context processor to the
+4. Add the `django.core.context_processors.i18n`_ context processor to the
    ``context_processors`` section for your backend in the ``TEMPLATES`` setting
    - it should have already been set by Django::
 
@@ -73,11 +73,18 @@ Installation
         'OPTIONS': {
           'context_processors': {
             # ...
-            'django.core.context_processors.i18n',
+            'django.template.context_processors.i18n',
           },
         },
       },
     ]
+
+.. note::
+
+    For Django versions **< 1.8**, use the
+    ``django.core.context_processors.i18n`` context processor instead. For
+    more information, refer to the `Upgrading templates to Django 1.8`_
+    documentation.
 
 5. Edit your template(s) and replace the `dynamically generated script`_ by the
    statically generated one:
@@ -113,5 +120,7 @@ The following step assumes you're using `django.contrib.staticfiles`_.
 .. _PyPI: http://pypi.python.org/pypi/django-statici18n
 .. _translated: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#message-files
 .. _compiled: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#compiling-message-files
+.. _django.core.context_processors.i18n: https://docs.djangoproject.com/en/1.11/ref/templates/api/#django-template-context-processors-i18n
+.. _Upgrading templates to Django 1.8: https://docs.djangoproject.com/en/1.11/ref/templates/upgrading/
 .. _dynamically generated script: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#using-the-javascript-translation-catalog
 .. _django.contrib.staticfiles: https://docs.djangoproject.com/en/1.11/ref/contrib/staticfiles/
