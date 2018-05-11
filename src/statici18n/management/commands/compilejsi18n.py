@@ -49,6 +49,24 @@ class Command(BaseCommand):
                             default='js',
                             help="Format of the output catalog. "
                             "Options are: js, json. Defaults to js.")
+        parser.add_argument('-n', '--namespace', dest='namespace',
+                            metavar='NAMESPACE', default=settings.STATICI18N_NAMESPACE,
+                            help="Javascript identifier to use as namespace.")
+
+    def _get_namespaced_catalog(self, rendered_js, namespace):
+        template = u'''
+            (function(global){{
+                var {namespace} = {{
+                  init: function() {{
+                    {text}
+                  }}
+                }};
+                {namespace}.init();
+                global.{namespace} = {namespace};
+            }}(this));
+        '''
+        namespaced_catalog = template.format(text=rendered_js, namespace=namespace)
+        return namespaced_catalog
 
     def _create_javascript_catalog(self, locale, domain, packages):
         activate(locale)
@@ -80,7 +98,7 @@ class Command(BaseCommand):
             response = catalog.get(self, None, domain=domain, packages=packages)
             return force_text(response.content)
 
-    def _create_output(self, outputdir, outputformat, locale, domain, packages):
+    def _create_output(self, outputdir, outputformat, locale, domain, packages, namespace):
         outputfile = os.path.join(outputdir, get_filename(locale, domain,
                                                           outputformat))
         basedir = os.path.dirname(outputfile)
@@ -89,6 +107,8 @@ class Command(BaseCommand):
 
         if outputformat == 'js':
             data = self._create_javascript_catalog(locale, domain, packages)
+            if namespace:
+                data = self._get_namespaced_catalog(data, namespace)
         elif outputformat == 'json':
             data = self._create_json_catalog(locale, domain, packages)
         else:
@@ -103,6 +123,7 @@ class Command(BaseCommand):
         packages = options['packages'] or settings.STATICI18N_PACKAGES
         outputdir = options['outputdir']
         outputformat = options['outputformat']
+        namespace = options['namespace']
         verbosity = int(options.get('verbosity'))
 
         if locale is not None:
@@ -123,4 +144,4 @@ class Command(BaseCommand):
             if verbosity > 0:
                 self.stdout.write("processing language %s\n" % locale)
 
-            self._create_output(outputdir, outputformat, locale, domain, packages)
+            self._create_output(outputdir, outputformat, locale, domain, packages, namespace)
