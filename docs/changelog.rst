@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v1.8.0 (2018 May 31)
+--------------------
+
+* [PR#39] Serialize packages before giving it to Django (thanks @askoretskiy)
+* [PR#41] Add the namespace parameter (thanks @afzaledx and @pomegranited)
+
 v1.7.0 (2018 Feb 11)
 --------------------
 
