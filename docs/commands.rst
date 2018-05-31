@@ -37,10 +37,9 @@ Some commonly used options are:
     Defaults to ``js``.
 
 ``-n NAMESPACE`` or ``--namespace=NAMESPACE``
-    The final gettext will be put with
-    window.SpecialBlock.gettext rather than the
-    window.gettext. This is useful for pluggable
-    modules which need Javascript i18n.
+    The final gettext will be put with window.SpecialBlock.gettext rather
+    than the window.gettext. This is useful for pluggable modules which
+    need Javascript i18n.
 
     Defaults to ``None``.
 
