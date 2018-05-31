@@ -101,6 +101,22 @@ def test_compile_with_output_format(settings, locale, output_format):
         settings.STATIC_ROOT, "jsi18n", locale, "djangojs.%s" % output_format))
 
 
+@pytest.mark.parametrize('locale', ['en'])
+@pytest.mark.parametrize('namespace', ['MyBlock'])
+def test_compile_with_namespace(settings, locale, namespace):
+    out = six.StringIO()
+    management.call_command('compilejsi18n', verbosity=1, stdout=out,
+                            locale=locale, outputformat='js', namespace=namespace)
+    out.seek(0)
+    lines = [l.strip() for l in out.readlines()]
+    assert len(lines) == 1
+    assert lines[0] == "processing language %s" % to_locale(locale)
+    file_path = os.path.join(settings.STATIC_ROOT, "jsi18n", locale, "djangojs.js")
+    assert os.path.exists(file_path)
+    generated_content = open(file_path).read()
+    assert 'global.MyBlock = MyBlock;' in generated_content
+
+
 @pytest.mark.usefixtures("cleandir")
 def test_compile_locale_not_exists():
     out = six.StringIO()

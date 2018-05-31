@@ -15,3 +15,5 @@ class StaticFilesConf(AppConf):
     OUTPUT_DIR = 'jsi18n'
     # The dotted path to the function that creates the filename
     FILENAME_FUNCTION = 'statici18n.utils.default_filename'
+    # Javascript identifier to use as namespace.
+    NAMESPACE = None

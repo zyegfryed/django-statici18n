@@ -68,3 +68,12 @@ Settings
     Use the legacy function ``statici18n.utils.legacy_filename`` to
     generate a filename with the language code derived from the
     ``django.utils.translation.trans_real import to_language``.
+
+.. attribute:: STATICI18N_NAMESPACE
+
+    :default: ``None``
+
+    Javascript identifier to use as namespace. This is useful when we want to
+    have separate translations for the global and the namespaced contexts.
+    The final gettext will be put under `window.<namespace>.gettext` rather
+    than the `window.gettext`. Useful for pluggable modules that need JS i18n.
