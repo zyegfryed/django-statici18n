@@ -10,7 +10,7 @@ from django.utils.translation import to_locale, activate
 from django.utils.encoding import force_text
 
 from statici18n.conf import settings
-from statici18n.utils import get_filename
+from statici18n.utils import get_filename, get_packages
 
 if django.VERSION < (2, 0):
     from django.views.i18n import (get_javascript_catalog,
@@ -75,7 +75,7 @@ class Command(BaseCommand):
             response = render_javascript_catalog(catalog, plural)
         else:
             catalog = JavaScriptCatalog()
-            packages = None if packages == 'django.conf' else packages.join('+')
+            packages = get_packages(packages)
             # we are passing None as the request, as the request object is currently not used by django
             response = catalog.get(self, None, domain=domain, packages=packages)
         return force_text(response.content)
@@ -93,7 +93,7 @@ class Command(BaseCommand):
             return force_text(json.dumps(data, ensure_ascii=False))
         else:
             catalog = JSONCatalog()
-            packages = None if packages == 'django.conf' else packages.join('+')
+            packages = get_packages(packages)
             # we are passing None as the request, as the request object is currently not used by django
             response = catalog.get(self, None, domain=domain, packages=packages)
             return force_text(response.content)

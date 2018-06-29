@@ -41,3 +41,13 @@ def test_filename_with_no_func(settings):
 
     with pytest.raises(ImportError):
         utils.get_filename('es', 'djangojs')
+
+
+@pytest.mark.parametrize('packages', ['mypackage1+mypackage2',
+                                      ['mypackage1', 'mypackage2']])
+def test_get_packages(packages):
+    assert utils.get_packages(packages) == 'mypackage1+mypackage2'
+
+
+def test_get_packages_None():
+    assert utils.get_packages('django.conf') is None

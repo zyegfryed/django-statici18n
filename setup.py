@@ -16,6 +16,7 @@ setup(
     install_requires=[
         "Django>=1.8",
         "django-appconf>=0.6",
+        "six",
     ],
     license="BSD",
     classifiers=[

@@ -1,6 +1,8 @@
+import collections
 import os
 
 from importlib import import_module
+import six
 
 from statici18n.conf import settings
 
@@ -35,3 +37,14 @@ def default_filename(language_code, domain, output_format='js'):
 def legacy_filename(locale, domain, output_format='js'):
     from django.utils.translation.trans_real import to_language
     return os.path.join(to_language(locale), '%s.%s' % (domain, output_format))
+
+
+def get_packages(packages):
+    if packages == 'django.conf':
+        return None
+
+    if isinstance(packages, six.string_types):
+        return packages
+
+    if isinstance(packages, collections.Sequence):
+        return '+'.join(packages)
