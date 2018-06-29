@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v1.8.2 (2018 Jun 29)
+--------------------
+
+This is a maintenance release due to CI issues.
+
+* Add Python 3.7 classifier
+* Fix Travis matrix definition
+* Remove Python 3.7 support for Travis
+
 v1.8.1 (2018 Jun 29)
 --------------------
 
