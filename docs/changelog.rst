@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v1.8.1 (2018 Jun 29)
+--------------------
+
+* Fix #42: regression issue with packages (thanks @classifaddict)
+* Update to latest Python versions
+* Add Python 3.7 support
+
 v1.8.0 (2018 May 31)
 --------------------
 
