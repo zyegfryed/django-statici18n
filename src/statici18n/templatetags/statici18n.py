@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-import os
+import os, sys
 from django import template
 from django.utils.safestring import mark_safe
 
@@ -42,4 +42,7 @@ def inlinei18n(locale):
     Behind the scenes, this is a thin wrapper around staticfiles's configred
     storage
     """
-    return mark_safe(staticfiles_storage.open(get_path(locale)).read())
+    if sys.version_info[0] = 2:
+        return mark_safe(staticfiles_storage.open(get_path(locale)).read())
+    else:
+        return mark_safe(staticfiles_storage.open(get_path(locale)).read().decode())
