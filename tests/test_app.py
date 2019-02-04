@@ -1,6 +1,7 @@
 import io
 import os
 import pytest
+import re
 
 import django
 from django.core import management
@@ -147,3 +148,4 @@ def test_inlinei18n_templatetag(locale):
     rendered = template.render(Context({'LANGUAGE_CODE': to_locale(locale)})).strip()
     assert 'var django = globals.django || (globals.django = {});' in rendered
     assert '&quot;' not in rendered
+    assert re.match('^<script>(r|b)\'',rendered) == None
