@@ -1,4 +1,2 @@
 -r requirements-test.txt
-
-tox==2.3.1
-virtualenv<14.0.0
+-r requirements-tools.txt

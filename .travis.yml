@@ -16,6 +16,6 @@ matrix:
       dist: xenial
       sudo: true
 install:
-  - pip install 'tox>=2.9,<3' 'virtualenv<14.0.0'
+  - pip install -r requirements-tools.txt
 script:
   - tox
