@@ -15,6 +15,6 @@ coverage:
 	@pytest -q tests --cov=src/statici18n --cov-report=html || exit 1
 
 clean:
-	@rm -fr build dist
+	@rm -fr build dist htmlcov
 
 .PHONY: build upload test lint coverage clean
