@@ -1,6 +1,16 @@
 Changelog
 =========
 
+v1.8.3 (2019 Mar 03)
+--------------------
+
+* [PR#44] Fix python3 compatibility about inlinei18n (thanks @outloudvi)
+* Add Django 2.1 support
+* Fix warning for statc templatetag in Django 2.1
+* Fix deprecation warning on collections module
+* Compress tox matrix definition
+* Change travis to use tox under the hood
+
 v1.8.2 (2018 Jun 29)
 --------------------
 
