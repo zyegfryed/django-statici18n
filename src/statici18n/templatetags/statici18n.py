@@ -4,10 +4,16 @@ from django import template
 from django.utils.safestring import mark_safe
 
 try:
-    from django.contrib.staticfiles.templatetags.staticfiles import static
+    from django.templatetags.static import static
+except ImportError:
+    try:
+        from django.contrib.staticfiles.templatetags.staticfiles import static
+    except ImportError:
+        from staticfiles.templatetags.staticfiles import static
+
+try:
     from django.contrib.staticfiles.storage import staticfiles_storage
 except ImportError:
-    from staticfiles.templatetags.staticfiles import static
     from staticfiles.storage import staticfiles_storage
 
 from statici18n.conf import settings
