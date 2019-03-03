@@ -42,4 +42,4 @@ def inlinei18n(locale):
     Behind the scenes, this is a thin wrapper around staticfiles's configred
     storage
     """
-    return mark_safe(staticfiles_storage.open(get_path(locale)).read())
+    return mark_safe(staticfiles_storage.open(get_path(locale)).read().decode())
