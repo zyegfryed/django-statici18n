@@ -1,4 +1,7 @@
-import collections
+try:
+    from collections.abc import Sequence
+except ImportError:
+    from collections import Sequence
 import os
 
 from importlib import import_module
@@ -46,5 +49,5 @@ def get_packages(packages):
     if isinstance(packages, six.string_types):
         return packages
 
-    if isinstance(packages, collections.Sequence):
+    if isinstance(packages, Sequence):
         return '+'.join(packages)

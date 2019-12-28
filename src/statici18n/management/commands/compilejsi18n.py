@@ -50,7 +50,8 @@ class Command(BaseCommand):
                             help="Format of the output catalog. "
                             "Options are: js, json. Defaults to js.")
         parser.add_argument('-n', '--namespace', dest='namespace',
-                            metavar='NAMESPACE', default=settings.STATICI18N_NAMESPACE,
+                            metavar='NAMESPACE',
+                            default=settings.STATICI18N_NAMESPACE,
                             help="Javascript identifier to use as namespace.")
 
     def _get_namespaced_catalog(self, rendered_js, namespace):
@@ -76,7 +77,8 @@ class Command(BaseCommand):
         else:
             catalog = JavaScriptCatalog()
             packages = get_packages(packages)
-            # we are passing None as the request, as the request object is currently not used by django
+            # we are passing None as the request, as the request object is
+            # currently not used by django
             response = catalog.get(self, None, domain=domain, packages=packages)
         return force_text(response.content)
 
@@ -94,11 +96,13 @@ class Command(BaseCommand):
         else:
             catalog = JSONCatalog()
             packages = get_packages(packages)
-            # we are passing None as the request, as the request object is currently not used by django
+            # we are passing None as the request, as the request object is
+            # currently not used by django
             response = catalog.get(self, None, domain=domain, packages=packages)
             return force_text(response.content)
 
-    def _create_output(self, outputdir, outputformat, locale, domain, packages, namespace):
+    def _create_output(self, outputdir, outputformat, locale, domain, packages,
+                       namespace):
         outputfile = os.path.join(outputdir, get_filename(locale, domain,
                                                           outputformat))
         basedir = os.path.dirname(outputfile)
@@ -144,4 +148,5 @@ class Command(BaseCommand):
             if verbosity > 0:
                 self.stdout.write("processing language %s\n" % locale)
 
-            self._create_output(outputdir, outputformat, locale, domain, packages, namespace)
+            self._create_output(outputdir, outputformat, locale, domain,
+                                packages, namespace)
