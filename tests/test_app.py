@@ -6,8 +6,12 @@ import re
 import django
 from django.core import management
 from django.template import Context, Engine
-from django.utils import six
 from django.utils import translation
+
+try:
+    from django.utils.six import StringIO
+except ImportError:
+    from io import StringIO
 
 LOCALES = ['en', 'fr', 'zh-Hans', 'ko-KR']
 
@@ -31,7 +35,7 @@ def to_locale(locale):
 
 @pytest.mark.usefixtures("cleandir")
 def test_compile_all(settings):
-    out = six.StringIO()
+    out = StringIO()
     management.call_command('compilejsi18n', verbosity=1, stdout=out)
     out.seek(0)
     lines = [l.strip() for l in out.readlines()]
@@ -52,7 +56,7 @@ LOCALIZED_CONTENT = {
 @pytest.mark.usefixtures("cleandir")
 @pytest.mark.parametrize('locale', LOCALES)
 def test_compile(settings, locale):
-    out = six.StringIO()
+    out = StringIO()
     management.call_command('compilejsi18n', verbosity=1, stdout=out,
                             locale=to_locale(locale))
     out.seek(0)
@@ -77,7 +81,7 @@ def test_compile_no_use_i18n(settings, locale):
     """
     settings.USE_I18N = False
 
-    out = six.StringIO()
+    out = StringIO()
     management.call_command('compilejsi18n', verbosity=1, stdout=out,
                             locale=to_locale(locale))
     out.seek(0)
@@ -91,7 +95,7 @@ def test_compile_no_use_i18n(settings, locale):
 @pytest.mark.parametrize('locale', ['en'])
 @pytest.mark.parametrize('output_format', ['js', 'json'])
 def test_compile_with_output_format(settings, locale, output_format):
-    out = six.StringIO()
+    out = StringIO()
     management.call_command('compilejsi18n', verbosity=1, stdout=out,
                             locale=locale, outputformat=output_format)
     out.seek(0)
@@ -105,7 +109,7 @@ def test_compile_with_output_format(settings, locale, output_format):
 @pytest.mark.parametrize('locale', ['en'])
 @pytest.mark.parametrize('namespace', ['MyBlock'])
 def test_compile_with_namespace(settings, locale, namespace):
-    out = six.StringIO()
+    out = StringIO()
     management.call_command('compilejsi18n', verbosity=1, stdout=out,
                             locale=locale, outputformat='js', namespace=namespace)
     out.seek(0)
@@ -120,7 +124,7 @@ def test_compile_with_namespace(settings, locale, namespace):
 
 @pytest.mark.usefixtures("cleandir")
 def test_compile_locale_not_exists():
-    out = six.StringIO()
+    out = StringIO()
     management.call_command('compilejsi18n', locale='ar', verbosity=1, stderr=out)
     assert out.getvalue() == ""
 
