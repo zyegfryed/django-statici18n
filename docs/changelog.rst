@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v1.9.0 (2020 Jan 11)
+--------------------
+
+* [PR#48] Update django-appconf, thanks @zetaab
+* Add Django 2.2 support
+* Add Django 3.0 support
+* Drop Python 3.3 support (reached EOL)
+* Drop Python 3.4 support (reached EOL)
+
 v1.8.3 (2019 Mar 03)
 --------------------
 
