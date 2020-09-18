@@ -7,7 +7,7 @@ import json
 import django
 from django.core.management.base import BaseCommand
 from django.utils.translation import to_locale, activate
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 from statici18n.conf import settings
 from statici18n.utils import get_filename, get_packages
@@ -80,7 +80,7 @@ class Command(BaseCommand):
             # we are passing None as the request, as the request object is
             # currently not used by django
             response = catalog.get(self, None, domain=domain, packages=packages)
-        return force_text(response.content)
+        return force_str(response.content)
 
     def _create_json_catalog(self, locale, domain, packages):
         activate(locale)
@@ -92,14 +92,14 @@ class Command(BaseCommand):
                 'plural': plural,
             }
 
-            return force_text(json.dumps(data, ensure_ascii=False))
+            return force_str(json.dumps(data, ensure_ascii=False))
         else:
             catalog = JSONCatalog()
             packages = get_packages(packages)
             # we are passing None as the request, as the request object is
             # currently not used by django
             response = catalog.get(self, None, domain=domain, packages=packages)
-            return force_text(response.content)
+            return force_str(response.content)
 
     def _create_output(self, outputdir, outputformat, locale, domain, packages,
                        namespace):
