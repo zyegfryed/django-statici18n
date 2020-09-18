@@ -40,8 +40,8 @@ Supported Django Versions
 -------------------------
 
 django-statici18n works with all the Django versions officially supported
-by the Django project. At the time of writing, these are the 2.2 (LTS) and
-3.0 series.
+by the Django project. At the time of writing, these are the 2.2 (LTS),
+3.0 and 3.1 series.
 
 Installation
 ------------
