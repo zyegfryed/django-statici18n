@@ -38,7 +38,7 @@ def test_compile_all(settings):
     out = StringIO()
     management.call_command('compilejsi18n', verbosity=1, stdout=out)
     out.seek(0)
-    lines = [l.strip() for l in out.readlines()]
+    lines = [line.strip() for line in out.readlines()]
 
     assert len(lines) == len(settings.LANGUAGES)
     for locale, _ in settings.LANGUAGES:
@@ -60,7 +60,7 @@ def test_compile(settings, locale):
     management.call_command('compilejsi18n', verbosity=1, stdout=out,
                             locale=to_locale(locale))
     out.seek(0)
-    lines = [l.strip() for l in out.readlines()]
+    lines = [line.strip() for line in out.readlines()]
 
     assert len(lines) == 1
     assert lines[0] == "processing language %s" % to_locale(locale)
@@ -85,7 +85,7 @@ def test_compile_no_use_i18n(settings, locale):
     management.call_command('compilejsi18n', verbosity=1, stdout=out,
                             locale=to_locale(locale))
     out.seek(0)
-    lines = [l.strip() for l in out.readlines()]
+    lines = [line.strip() for line in out.readlines()]
     assert len(lines) == 1
     assert lines[0] == "processing language %s" % to_locale(locale)
     assert os.path.exists(os.path.join(
@@ -99,7 +99,7 @@ def test_compile_with_output_format(settings, locale, output_format):
     management.call_command('compilejsi18n', verbosity=1, stdout=out,
                             locale=locale, outputformat=output_format)
     out.seek(0)
-    lines = [l.strip() for l in out.readlines()]
+    lines = [line.strip() for line in out.readlines()]
     assert len(lines) == 1
     assert lines[0] == "processing language %s" % to_locale(locale)
     assert os.path.exists(os.path.join(
@@ -113,7 +113,7 @@ def test_compile_with_namespace(settings, locale, namespace):
     management.call_command('compilejsi18n', verbosity=1, stdout=out,
                             locale=locale, outputformat='js', namespace=namespace)
     out.seek(0)
-    lines = [l.strip() for l in out.readlines()]
+    lines = [line.strip() for line in out.readlines()]
     assert len(lines) == 1
     assert lines[0] == "processing language %s" % to_locale(locale)
     file_path = os.path.join(settings.STATIC_ROOT, "jsi18n", locale, "djangojs.js")
