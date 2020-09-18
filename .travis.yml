@@ -1,9 +1,10 @@
-dist: xenial
+dist: bionic
 language: python
 matrix:
   include:
     - python: "3.5"
       env: TOXENV=py35-django22
+      dist: xenial
     - python: "3.6"
       env: TOXENV=py36-django22,py36-django30,py36-django31
     - python: "3.7"
