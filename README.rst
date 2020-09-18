@@ -32,8 +32,8 @@ That's what ``django-statici18n`` is for:
 The main website for ``django-statici18n`` is
 `github.com/zyegfryed/django-statici18n`_ where you can also file tickets.
 
-.. _JSONCatalog view: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#the-jsoncatalog-view
-.. _adding an overhead: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#note-on-performance
+.. _JSONCatalog view: https://docs.djangoproject.com/en/2.2/topics/i18n/translation/#the-jsoncatalog-view
+.. _adding an overhead: https://docs.djangoproject.com/en/2.2/topics/i18n/translation/#note-on-performance
 .. _github.com/zyegfryed/django-statici18n: https://github.com/zyegfryed/django-statici18n
 
 Supported Django Versions
@@ -111,9 +111,9 @@ The following step assumes you're using `django.contrib.staticfiles`_.
     <script>{% inlinei18n LANGUAGE_CODE %}</script>
 
 .. _PyPI: http://pypi.python.org/pypi/django-statici18n
-.. _translated: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#message-files
-.. _compiled: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#compiling-message-files
-.. _django.core.context_processors.i18n: https://docs.djangoproject.com/en/1.11/ref/templates/api/#django-template-context-processors-i18n
-.. _Upgrading templates to Django 1.8: https://docs.djangoproject.com/en/1.11/ref/templates/upgrading/
-.. _dynamically generated script: https://docs.djangoproject.com/en/1.11/topics/i18n/translation/#using-the-javascript-translation-catalog
-.. _django.contrib.staticfiles: https://docs.djangoproject.com/en/1.11/ref/contrib/staticfiles/
+.. _translated: https://docs.djangoproject.com/en/2.2/topics/i18n/translation/#message-files
+.. _compiled: https://docs.djangoproject.com/en/2.2/topics/i18n/translation/#compiling-message-files
+.. _django.core.context_processors.i18n: https://docs.djangoproject.com/en/2.2/ref/templates/api/#django-template-context-processors-i18n
+.. _Upgrading templates to Django 1.8: https://docs.djangoproject.com/en/2.2/ref/templates/upgrading/
+.. _dynamically generated script: https://docs.djangoproject.com/en/2.2/topics/i18n/translation/#using-the-javascript-translation-catalog
+.. _django.contrib.staticfiles: https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/
