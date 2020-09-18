@@ -1,6 +1,22 @@
 Changelog
 =========
 
+v2.0.0 (2020 Sep 18)
+--------------------
+
+* [PR#49] Change `force_text` to `force_str` (thanks @bullfest)
+* Add Django 3.1 support
+* Drop Django 1.8 support
+* Drop Django 1.9 support
+* Drop Django 1.10 support
+* Drop Django 1.11 support
+* Drop Django 2.0 support
+* Drop Django 2.1 support
+* Fix linting issues
+* Use Python 3.8 as default version
+* Fix travis matrix definition
+* Upgrade Sphinx configuration
+
 v1.9.0 (2020 Jan 11)
 --------------------
 
@@ -15,7 +31,7 @@ v1.8.3 (2019 Mar 03)
 
 * [PR#44] Fix python3 compatibility about inlinei18n (thanks @outloudvi)
 * Add Django 2.1 support
-* Fix warning for statc templatetag in Django 2.1
+* Fix warning for static templatetag in Django 2.1
 * Fix deprecation warning on collections module
 * Compress tox matrix definition
 * Change travis to use tox under the hood
