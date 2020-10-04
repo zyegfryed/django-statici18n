@@ -1,11 +1,7 @@
-try:
-    from collections.abc import Sequence
-except ImportError:
-    from collections import Sequence
+from collections.abc import Sequence
 import os
 
 from importlib import import_module
-import six
 
 from statici18n.conf import settings
 
@@ -46,7 +42,7 @@ def get_packages(packages):
     if packages == 'django.conf':
         return None
 
-    if isinstance(packages, six.string_types):
+    if isinstance(packages, str):
         return packages
 
     if isinstance(packages, Sequence):

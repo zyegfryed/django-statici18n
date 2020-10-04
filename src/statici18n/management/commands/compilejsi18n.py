@@ -1,5 +1,3 @@
-from __future__ import with_statement
-
 import io
 import os
 import json
@@ -12,14 +10,7 @@ from django.utils.encoding import force_str
 from statici18n.conf import settings
 from statici18n.utils import get_filename, get_packages
 
-if django.VERSION < (2, 0):
-    from django.views.i18n import (get_javascript_catalog,
-                               render_javascript_catalog,
-                               get_formats)
-else:
-    from django.views.i18n import (get_formats,
-                                JavaScriptCatalog,
-                                JSONCatalog)
+from django.views.i18n import get_formats, JavaScriptCatalog, JSONCatalog
 
 
 class Command(BaseCommand):
