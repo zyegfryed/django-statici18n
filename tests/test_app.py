@@ -3,30 +3,20 @@ import os
 import pytest
 import re
 
-import django
 from django.core import management
 from django.template import Context, Engine
-from django.utils import translation
 
 
 LOCALES = ["en", "fr", "zh-Hans", "ko-KR"]
 
 
 def get_template_from_string(template_code):
-    engine_options = {}
-    if django.VERSION >= (1, 9):
-        engine_options = {
-            "libraries": {
-                "statici18n": "statici18n.templatetags.statici18n",
-            },
-        }
+    engine_options = {
+        "libraries": {
+            "statici18n": "statici18n.templatetags.statici18n",
+        },
+    }
     return Engine(**engine_options).from_string(template_code)
-
-
-def to_locale(locale):
-    if django.VERSION < (1, 10):
-        return translation.to_locale(locale)
-    return locale
 
 
 @pytest.mark.usefixtures("cleandir")
@@ -38,7 +28,7 @@ def test_compile_all(settings):
 
     assert len(lines) == len(settings.LANGUAGES)
     for locale, _ in settings.LANGUAGES:
-        assert "processing language %s" % to_locale(locale) in lines
+        assert "processing language %s" % locale in lines
 
 
 LOCALIZED_CONTENT = {
@@ -53,17 +43,13 @@ LOCALIZED_CONTENT = {
 @pytest.mark.parametrize("locale", LOCALES)
 def test_compile(settings, locale):
     out = io.StringIO()
-    management.call_command(
-        "compilejsi18n", verbosity=1, stdout=out, locale=to_locale(locale)
-    )
+    management.call_command("compilejsi18n", verbosity=1, stdout=out, locale=locale)
     out.seek(0)
     lines = [line.strip() for line in out.readlines()]
 
     assert len(lines) == 1
-    assert lines[0] == "processing language %s" % to_locale(locale)
-    filename = os.path.join(
-        settings.STATICI18N_ROOT, "jsi18n", to_locale(locale), "djangojs.js"
-    )
+    assert lines[0] == "processing language %s" % locale
+    filename = os.path.join(settings.STATICI18N_ROOT, "jsi18n", locale, "djangojs.js")
     assert os.path.exists(filename)
     with io.open(filename, "r", encoding="utf-8") as fp:
         content = fp.read()
@@ -80,15 +66,13 @@ def test_compile_no_use_i18n(settings, locale):
     settings.USE_I18N = False
 
     out = io.StringIO()
-    management.call_command(
-        "compilejsi18n", verbosity=1, stdout=out, locale=to_locale(locale)
-    )
+    management.call_command("compilejsi18n", verbosity=1, stdout=out, locale=locale)
     out.seek(0)
     lines = [line.strip() for line in out.readlines()]
     assert len(lines) == 1
-    assert lines[0] == "processing language %s" % to_locale(locale)
+    assert lines[0] == "processing language %s" % locale
     assert os.path.exists(
-        os.path.join(settings.STATIC_ROOT, "jsi18n", to_locale(locale), "djangojs.js")
+        os.path.join(settings.STATIC_ROOT, "jsi18n", locale, "djangojs.js")
     )
 
 
@@ -106,7 +90,7 @@ def test_compile_with_output_format(settings, locale, output_format):
     out.seek(0)
     lines = [line.strip() for line in out.readlines()]
     assert len(lines) == 1
-    assert lines[0] == "processing language %s" % to_locale(locale)
+    assert lines[0] == "processing language %s" % locale
     assert os.path.exists(
         os.path.join(
             settings.STATIC_ROOT, "jsi18n", locale, "djangojs.%s" % output_format
@@ -129,7 +113,7 @@ def test_compile_with_namespace(settings, locale, namespace):
     out.seek(0)
     lines = [line.strip() for line in out.readlines()]
     assert len(lines) == 1
-    assert lines[0] == "processing language %s" % to_locale(locale)
+    assert lines[0] == "processing language %s" % locale
     file_path = os.path.join(settings.STATIC_ROOT, "jsi18n", locale, "djangojs.js")
     assert os.path.exists(file_path)
     generated_content = open(file_path).read()
@@ -150,10 +134,8 @@ def test_statici18n_templatetag(locale):
     <script src="{% statici18n LANGUAGE_CODE %}"></script>
     """
     template = get_template_from_string(template)
-    assert (
-        template.render(Context({"LANGUAGE_CODE": locale})).strip()
-        == '<script src="/static/jsi18n/%s/djangojs.js"></script>' % locale
-    )
+    txt = template.render(Context({"LANGUAGE_CODE": locale})).strip()
+    assert txt == '<script src="/static/jsi18n/%s/djangojs.js"></script>' % locale
 
 
 @pytest.mark.usefixtures("cleandir")
@@ -165,7 +147,7 @@ def test_inlinei18n_templatetag(locale):
     """
     management.call_command("compilejsi18n")
     template = get_template_from_string(template)
-    rendered = template.render(Context({"LANGUAGE_CODE": to_locale(locale)})).strip()
+    rendered = template.render(Context({"LANGUAGE_CODE": locale})).strip()
     assert "var django = globals.django || (globals.django = {});" in rendered
     assert "&quot;" not in rendered
     assert re.match("^<script>(r|b)'", rendered) is None

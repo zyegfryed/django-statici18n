@@ -1,16 +1,14 @@
 import io
 import os
-import json
 
-import django
 from django.core.management.base import BaseCommand
-from django.utils.translation import to_locale, activate
+from django.utils.translation import activate
 from django.utils.encoding import force_str
 
 from statici18n.conf import settings
 from statici18n.utils import get_filename, get_packages
 
-from django.views.i18n import get_formats, JavaScriptCatalog, JSONCatalog
+from django.views.i18n import JavaScriptCatalog, JSONCatalog
 
 
 class Command(BaseCommand):
@@ -88,35 +86,21 @@ class Command(BaseCommand):
 
     def _create_javascript_catalog(self, locale, domain, packages):
         activate(locale)
-        if django.VERSION < (2, 0):
-            catalog, plural = get_javascript_catalog(locale, domain, packages)
-            response = render_javascript_catalog(catalog, plural)
-        else:
-            catalog = JavaScriptCatalog()
-            packages = get_packages(packages)
-            # we are passing None as the request, as the request object is
-            # currently not used by django
-            response = catalog.get(self, None, domain=domain, packages=packages)
+        catalog = JavaScriptCatalog()
+        packages = get_packages(packages)
+        # we are passing None as the request, as the request object is
+        # currently not used by django
+        response = catalog.get(self, None, domain=domain, packages=packages)
         return force_str(response.content)
 
     def _create_json_catalog(self, locale, domain, packages):
         activate(locale)
-        if django.VERSION < (2, 0):
-            catalog, plural = get_javascript_catalog(locale, domain, packages)
-            data = {
-                "catalog": catalog,
-                "formats": get_formats(),
-                "plural": plural,
-            }
-
-            return force_str(json.dumps(data, ensure_ascii=False))
-        else:
-            catalog = JSONCatalog()
-            packages = get_packages(packages)
-            # we are passing None as the request, as the request object is
-            # currently not used by django
-            response = catalog.get(self, None, domain=domain, packages=packages)
-            return force_str(response.content)
+        catalog = JSONCatalog()
+        packages = get_packages(packages)
+        # we are passing None as the request, as the request object is
+        # currently not used by django
+        response = catalog.get(self, None, domain=domain, packages=packages)
+        return force_str(response.content)
 
     def _create_output(
         self, outputdir, outputformat, locale, domain, packages, namespace
@@ -151,10 +135,6 @@ class Command(BaseCommand):
             languages = [locale]
         elif not settings.USE_I18N:
             languages = [settings.LANGUAGE_CODE]
-        elif django.VERSION < (1, 10):
-            languages = [
-                to_locale(lang_code) for (lang_code, lang_name) in settings.LANGUAGES
-            ]
         else:
             languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
 
