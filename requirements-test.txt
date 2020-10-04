@@ -1,5 +1,0 @@
--r requirements.txt
-
-pytest>=4,<5.0
-pytest-django==3.7.0
-wheel==0.33.6
