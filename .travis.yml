@@ -10,9 +10,9 @@ matrix:
     - python: "3.7"
       env: TOXENV=py37-django22,py37-django30,py37-django31
     - python: "3.8"
-      env: TOXENV=flake8,py38-django22,py38-django30,py38-django31,coverage
+      env: TOXENV=lint,py38-django22,py38-django30,py38-django31,coverage
 install:
-  - pip install -r requirements-tools.txt
+  - pip install tox
 script:
   - tox
 after_success:
