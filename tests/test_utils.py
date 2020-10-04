@@ -30,7 +30,7 @@ def custom_func(locale, domain):
 
 
 def test_filename_with_custom_func(settings):
-    settings.STATICI18N_FILENAME_FUNCTION = "test_utils.custom_func"
+    settings.STATICI18N_FILENAME_FUNCTION = ".".join([__name__, "custom_func"])
 
     filename = utils.get_filename("es", "djangojs")
     assert filename == "es-djangojs.js"

@@ -1,7 +1,6 @@
 from collections.abc import Sequence
-import os
-
 from importlib import import_module
+import os
 
 from statici18n.conf import settings
 
