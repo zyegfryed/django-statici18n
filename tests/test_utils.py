@@ -3,26 +3,26 @@ import pytest
 from statici18n import utils
 
 
-@pytest.mark.parametrize('locale', ['en', 'zh-hans', 'ko-KR'])
+@pytest.mark.parametrize("locale", ["en", "zh-hans", "ko-KR"])
 def test_default_filename(locale):
-    filename = utils.get_filename(locale, 'djangojs')
-    assert filename == '%s/djangojs.js' % locale
+    filename = utils.get_filename(locale, "djangojs")
+    assert filename == "%s/djangojs.js" % locale
 
 
-@pytest.mark.parametrize('fmt', ['js', 'json', 'yaml'])
+@pytest.mark.parametrize("fmt", ["js", "json", "yaml"])
 def test_default_filename_with_outputformat(fmt):
-    filename = utils.get_filename('en', 'djangojs', fmt)
-    assert filename == 'en/djangojs.%s' % fmt
+    filename = utils.get_filename("en", "djangojs", fmt)
+    assert filename == "en/djangojs.%s" % fmt
 
 
 def test_legacy_filename(settings):
-    settings.STATICI18N_FILENAME_FUNCTION = 'statici18n.utils.legacy_filename'
+    settings.STATICI18N_FILENAME_FUNCTION = "statici18n.utils.legacy_filename"
 
-    filename = utils.get_filename('en_GB', 'djangojs')
-    assert filename == 'en-gb/djangojs.js'
+    filename = utils.get_filename("en_GB", "djangojs")
+    assert filename == "en-gb/djangojs.js"
 
-    filename = utils.get_filename('zh-Hans', 'djangojs')
-    assert filename == 'zh-hans/djangojs.js'
+    filename = utils.get_filename("zh-Hans", "djangojs")
+    assert filename == "zh-hans/djangojs.js"
 
 
 def custom_func(locale, domain):
@@ -30,24 +30,25 @@ def custom_func(locale, domain):
 
 
 def test_filename_with_custom_func(settings):
-    settings.STATICI18N_FILENAME_FUNCTION = 'test_utils.custom_func'
+    settings.STATICI18N_FILENAME_FUNCTION = "test_utils.custom_func"
 
-    filename = utils.get_filename('es', 'djangojs')
-    assert filename == 'es-djangojs.js'
+    filename = utils.get_filename("es", "djangojs")
+    assert filename == "es-djangojs.js"
 
 
 def test_filename_with_no_func(settings):
-    settings.STATICI18N_FILENAME_FUNCTION = 'no_func'
+    settings.STATICI18N_FILENAME_FUNCTION = "no_func"
 
     with pytest.raises(ImportError):
-        utils.get_filename('es', 'djangojs')
+        utils.get_filename("es", "djangojs")
 
 
-@pytest.mark.parametrize('packages', ['mypackage1+mypackage2',
-                                      ['mypackage1', 'mypackage2']])
+@pytest.mark.parametrize(
+    "packages", ["mypackage1+mypackage2", ["mypackage1", "mypackage2"]]
+)
 def test_get_packages(packages):
-    assert utils.get_packages(packages) == 'mypackage1+mypackage2'
+    assert utils.get_packages(packages) == "mypackage1+mypackage2"
 
 
 def test_get_packages_None():
-    assert utils.get_packages('django.conf') is None
+    assert utils.get_packages("django.conf") is None

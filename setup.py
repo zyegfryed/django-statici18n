@@ -7,10 +7,10 @@ setup(
     author_email="zyegfryed@gmail.com",
     url="http://django-statici18n.readthedocs.org/",
     description="A Django app that provides helper for generating "
-                "Javascript catalog to static files.",
-    long_description=open('README.rst').read(),
-    package_dir={'': 'src'},
-    packages=find_packages('src'),
+    "Javascript catalog to static files.",
+    long_description=open("README.rst").read(),
+    package_dir={"": "src"},
+    packages=find_packages("src"),
     include_package_data=True,
     zip_safe=False,
     install_requires=[
@@ -33,6 +33,6 @@ setup(
         "Programming Language :: Python :: 3.7",
     ],
     project_urls={
-        'Source': 'https://github.com/zyegfryed/django-statici18n',
-    }
+        "Source": "https://github.com/zyegfryed/django-statici18n",
+    },
 )

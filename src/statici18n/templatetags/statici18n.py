@@ -12,8 +12,9 @@ register = template.Library()
 
 
 def get_path(locale):
-    return os.path.join(settings.STATICI18N_OUTPUT_DIR,
-                        get_filename(locale, settings.STATICI18N_DOMAIN))
+    return os.path.join(
+        settings.STATICI18N_OUTPUT_DIR, get_filename(locale, settings.STATICI18N_DOMAIN)
+    )
 
 
 @register.simple_tag

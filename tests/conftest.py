@@ -16,4 +16,5 @@ import pytest
 def cleandir(request, settings):
     def teardown():
         shutil.rmtree(settings.STATICI18N_ROOT)
+
     request.addfinalizer(teardown)
