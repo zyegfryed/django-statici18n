@@ -5,6 +5,9 @@ django-statici18n
    :alt: Build Status
    :target: https://travis-ci.org/zyegfryed/django-statici18n
 
+.. image:: https://codecov.io/gh/zyegfryed/django-statici18n/branch/master/graph/badge.svg?token=xiaDYAr30F
+   :target: https://codecov.io/gh/zyegfryed/django-statici18n
+    
 A Django app that provides helper for generating JavaScript catalog to static
 files.
 
