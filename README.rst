@@ -8,8 +8,7 @@ django-statici18n
 .. image:: https://codecov.io/gh/zyegfryed/django-statici18n/branch/master/graph/badge.svg?token=xiaDYAr30F
    :target: https://codecov.io/gh/zyegfryed/django-statici18n
     
-A Django app that provides helper for generating JavaScript catalog to static
-files.
+A Django app compiling i18n JavaScript catalogs to static files.
 
 Overview
 --------
@@ -21,13 +20,14 @@ strings.
 
 At first glance, it works well and everything is fine. But, because
 `JSONCatalog view`_ is generating JavaScript catalog dynamically on each
-request, it's `adding an overhead`_ that can be an issue with site growth.
+and every request, it's `adding an overhead`_ that can be an issue with
+site growth.
 
 That's what ``django-statici18n`` is for:
 
-    Collecting JavaScript catalogs from each of your Django apps (and any other
-    place you specify) into a single location that can easily be served in
-    production.
+    Collecting JavaScript catalogs from each of your Django apps (and any
+    other place you specify) into a single location that can easily be
+    served in production.
 
 The main website for ``django-statici18n`` is
 `github.com/zyegfryed/django-statici18n`_ where you can also file tickets.
@@ -39,9 +39,9 @@ The main website for ``django-statici18n`` is
 Supported Django Versions
 -------------------------
 
-django-statici18n works with all the Django versions officially supported
-by the Django project. At the time of writing, these are the 2.2 (LTS),
-3.0 and 3.1 series.
+``django-statici18n`` works with all the Django versions officially
+supported by the Django project. At this time of writing, these are the
+2.2 (LTS), 3.0 and 3.1 series.
 
 Installation
 ------------
@@ -64,8 +64,8 @@ Installation
     python manage.py compilejsi18n
 
 4. Add the `django.core.context_processors.i18n`_ context processor to the
-   ``context_processors`` section for your backend in the ``TEMPLATES`` setting
-   - it should have already been set by Django::
+   ``context_processors`` section for your backend in the ``TEMPLATES``
+   setting - it should have already been set by Django::
 
     TEMPLATES = [
       {
