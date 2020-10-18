@@ -1,6 +1,17 @@
 Changelog
 =========
 
+v2.0.1 (2020 Oct 18)
+--------------------
+
+* Switch to codecov as coverage service
+* Remove no longer used compatibility code
+* Simplify tooling, rely only on tox
+* Remove six dependency
+* Fix Django and django-appconf minimum version
+* Fix Python versions suppport
+* Add project URL
+
 v2.0.0 (2020 Sep 18)
 --------------------
 
