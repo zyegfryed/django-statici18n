@@ -148,6 +148,6 @@ def test_inlinei18n_templatetag(locale):
     management.call_command("compilejsi18n")
     template = get_template_from_string(template)
     rendered = template.render(Context({"LANGUAGE_CODE": locale})).strip()
-    assert "var django = globals.django || (globals.django = {});" in rendered
+    assert "django = globals.django || (globals.django = {});" in rendered
     assert "&quot;" not in rendered
     assert re.match("^<script>(r|b)'", rendered) is None
