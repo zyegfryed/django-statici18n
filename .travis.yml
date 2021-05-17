@@ -6,11 +6,11 @@ matrix:
       env: TOXENV=py35-django22
       dist: xenial
     - python: "3.6"
-      env: TOXENV=py36-django22,py36-django30,py36-django31
+      env: TOXENV=py36-django22,py36-django31,py36-django32
     - python: "3.7"
-      env: TOXENV=py37-django22,py37-django30,py37-django31
+      env: TOXENV=py37-django22,py37-django31,py37-django32
     - python: "3.8"
-      env: TOXENV=lint,py38-django22,py38-django30,py38-django31,coverage
+      env: TOXENV=lint,py38-django22,py38-django31,py38-django32,coverage
 install:
   - pip install tox codecov
 script:
