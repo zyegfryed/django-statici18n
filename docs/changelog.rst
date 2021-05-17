@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v2.1.0 (2021 May 17)
+--------------------
+
+* [PR#50] Fix test under Django 3.2 (thanks @mbakke)
+* Add Django 3.2 support
+* Drop Django 3.0 support
+* Add Python 3.9 support
+
 v2.0.1 (2020 Oct 18)
 --------------------
 
