@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v2.1.1 (2021 Nov 2)
+-------------------
+
+* [PR#52] Fix deprecation warning for AppConfig in Django version 3.2 or
+  above (thanks @DmytroLitvinov)
+
 v2.1.0 (2021 May 17)
 --------------------
 
