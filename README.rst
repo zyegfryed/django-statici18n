@@ -3,7 +3,7 @@ django-statici18n
 
 .. image:: https://github.com/zyegfryed/django-statici18n/actions/workflows/python-package.yml/badge.svg?branch=master
    :alt: Build Status
-   :target: https://travis-ci.org/zyegfryed/django-statici18n
+   :target: https://github.com/zyegfryed/django-statici18n/actions
 
 .. image:: https://codecov.io/gh/zyegfryed/django-statici18n/branch/master/graph/badge.svg?token=xiaDYAr30F
    :target: https://codecov.io/gh/zyegfryed/django-statici18n
