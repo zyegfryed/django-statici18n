@@ -1,7 +1,7 @@
 django-statici18n
 =================
 
-.. image:: https://github.com/zyegfryed/django-statici18n/actions/workflows/python-package.yml/badge.svg?branch=master
+.. image:: https://github.com/zyegfryed/django-statici18n/actions/workflows/build.yml/badge.svg?branch=master
    :alt: Build Status
    :target: https://github.com/zyegfryed/django-statici18n/actions
 
