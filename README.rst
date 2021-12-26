@@ -1,11 +1,11 @@
 django-statici18n
 =================
 
-.. image:: https://github.com/zyegfryed/django-statici18n/actions/workflows/build.yml/badge.svg?branch=master
+.. image:: https://github.com/zyegfryed/django-statici18n/actions/workflows/build.yml/badge.svg?branch=main
    :alt: Build Status
    :target: https://github.com/zyegfryed/django-statici18n/actions
 
-.. image:: https://codecov.io/gh/zyegfryed/django-statici18n/branch/master/graph/badge.svg?token=xiaDYAr30F
+.. image:: https://codecov.io/gh/zyegfryed/django-statici18n/branch/main/graph/badge.svg?token=xiaDYAr30F
    :target: https://codecov.io/gh/zyegfryed/django-statici18n
 
 A Django app compiling i18n JavaScript catalogs to static files.
