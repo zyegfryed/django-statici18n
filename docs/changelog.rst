@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v2.1.2 (2021 Dec 26)
+--------------------
+
+* Add support for Django 4.0
+* Remove support for Django 3.1 (EOL)
+* Rename master branch to main
+* Move CI to GitHub Actions
+
 v2.1.1 (2021 Nov 2)
 -------------------
 
