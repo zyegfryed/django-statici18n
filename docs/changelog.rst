@@ -1,8 +1,20 @@
 Changelog
 =========
 
+v2.1.3 (2021 Dec 27)
+--------------------
+
+* Revert support for Django 4.0
+* Keep support for Django 3.1 (EOL)
+
 v2.1.2 (2021 Dec 26)
 --------------------
+
+.. warning::
+
+    This is a buggy release were we removed the support for Django 3.1 on
+    a patch release instead of into a minor release. Django 3.1 support
+    will be dropped in v2.2 series.
 
 * Add support for Django 4.0
 * Remove support for Django 3.1 (EOL)
