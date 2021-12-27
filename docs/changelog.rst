@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v2.2.0 (2021 Dec 27)
+--------------------
+
+* Add Django 4.0 suppprt
+* Drop Django 3.1 support (EOL)
+* Add Python 3.10 support
+
 v2.1.3 (2021 Dec 27)
 --------------------
 
