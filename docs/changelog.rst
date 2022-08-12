@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v2.3.0 (2022 Aug 12)
+--------------------
+
+* Update requires_system_checks for django version>=3.2 (thanks @felixrindt)
+* Drop support for Django 2.2
+* Add support for Django 4.1
+
 v2.2.0 (2021 Dec 27)
 --------------------
 
