@@ -13,7 +13,7 @@ from django.views.i18n import JavaScriptCatalog, JSONCatalog
 
 class Command(BaseCommand):
     help = "Collect Javascript catalog files in a single location."
-    requires_system_checks = False
+    requires_system_checks = []
 
     def add_arguments(self, parser):
         parser.add_argument(
