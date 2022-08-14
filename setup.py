@@ -6,8 +6,8 @@ setup(
     author="Sebastien Fievet",
     author_email="zyegfryed@gmail.com",
     url="http://django-statici18n.readthedocs.org/",
-    description="A Django app that provides helper for generating "
-    "Javascript catalog to static files.",
+    description=("A Django app that compiles i18n JavaScript catalogs "
+                 "to static files."),
     long_description=open("README.rst").read(),
     package_dir={"": "src"},
     packages=find_packages("src"),

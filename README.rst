@@ -8,8 +8,6 @@ django-statici18n
 .. image:: https://codecov.io/gh/zyegfryed/django-statici18n/branch/main/graph/badge.svg?token=xiaDYAr30F
    :target: https://codecov.io/gh/zyegfryed/django-statici18n
 
-A Django app compiling i18n JavaScript catalogs to static files.
-
 Overview
 --------
 
