@@ -70,7 +70,7 @@ class Command(BaseCommand):
         )
 
     def _get_namespaced_catalog(self, rendered_js, namespace):
-        template = u"""
+        template = """
             (function(global){{
                 var {namespace} = {{
                   init: function() {{
