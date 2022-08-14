@@ -30,8 +30,8 @@ That's what ``django-statici18n`` is for:
 The main website for ``django-statici18n`` is
 `github.com/zyegfryed/django-statici18n`_ where you can also file tickets.
 
-.. _JSONCatalog view: https://docs.djangoproject.com/en/2.2/topics/i18n/translation/#the-jsoncatalog-view
-.. _adding an overhead: https://docs.djangoproject.com/en/2.2/topics/i18n/translation/#note-on-performance
+.. _JSONCatalog view: https://docs.djangoproject.com/en/3.2/topics/i18n/translation/#the-jsoncatalog-view
+.. _adding an overhead: https://docs.djangoproject.com/en/3.2/topics/i18n/translation/#note-on-performance
 .. _github.com/zyegfryed/django-statici18n: https://github.com/zyegfryed/django-statici18n
 
 Supported Django Versions
