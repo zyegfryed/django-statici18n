@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v2.3.1 (2022 Aug 14)
+--------------------
+
+* Reflect supported Python versions in classifiers
+* Update title and links in documentation
+
 v2.3.0 (2022 Aug 12)
 --------------------
 
