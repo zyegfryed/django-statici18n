@@ -1,5 +1,7 @@
 import io
+import json
 import os
+from time import time
 
 from django.core.management.base import BaseCommand
 from django.utils.translation import activate
@@ -142,6 +144,9 @@ class Command(BaseCommand):
             outputdir = os.path.join(
                 settings.STATICI18N_ROOT, settings.STATICI18N_OUTPUT_DIR
             )
+
+        with open(os.path.join(outputdir, 'generated_at.json'), 'w') as file:
+            json.dump({'generated_at': int(time())}, file)
 
         for locale in languages:
             if verbosity > 0:
