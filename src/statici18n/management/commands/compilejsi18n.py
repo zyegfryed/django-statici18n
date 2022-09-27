@@ -145,6 +145,9 @@ class Command(BaseCommand):
                 settings.STATICI18N_ROOT, settings.STATICI18N_OUTPUT_DIR
             )
 
+        if not os.path.isdir(outputdir):
+            os.makedirs(outputdir)
+
         with open(os.path.join(outputdir, 'generated_at.json'), 'w') as file:
             json.dump({'generated_at': int(time())}, file)
 
