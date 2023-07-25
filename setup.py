@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="django-statici18n",
-    version="2.3.1",
+    version="2.3.2",
     author="Sebastien Fievet",
     author_email="zyegfryed@gmail.com",
     url="http://django-statici18n.readthedocs.org/",
@@ -14,7 +14,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        "Django>=2.2",
+        "Django>=3.2",
         "django-appconf>=1.0",
     ],
     license="BSD",
@@ -27,8 +27,6 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",

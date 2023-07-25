@@ -1,8 +1,8 @@
-from django.conf.urls import patterns, url
+from django.urls import path
 from django.views.generic.base import TemplateView
 
-urlpatterns = patterns(
+urlpatterns = [
     "",
-    url(r"^$", TemplateView.as_view(template_name="base.html")),
-    url(r"^jsi18n/$", "django.views.i18n.javascript_catalog", name="jsi18n"),
-)
+    path("", TemplateView.as_view(template_name="base.html")),
+    path("jsi18n/", "django.views.i18n.javascript_catalog", name="jsi18n"),
+]
