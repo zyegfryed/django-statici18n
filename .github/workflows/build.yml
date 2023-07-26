@@ -5,7 +5,7 @@ on: [push,pull_request]
 jobs:
   build:
 
-    name: Python ${{ matrix.python }} on ${{ matrix.os }}
+    name: Python ${{ matrix.python-version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -14,9 +14,9 @@ jobs:
 
         # Python 3.6 & 3.7 are no longer available in ubuntu-latest
         include:
-          - python: '3.6'
+          - python-version: '3.6'
             os: ubuntu-20.04
-          - python: '3.7'
+          - python-version: '3.7'
             os: ubuntu-20.04
 
     steps:
