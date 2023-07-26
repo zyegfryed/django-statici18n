@@ -1,6 +1,13 @@
 Changelog
 =========
 
+Unreleased
+--------------------
+
+* Add support for Django 4.1 & 4.2
+* Add support for Python 3.11
+* Drop support for Django 4.0
+
 v2.3.1 (2022 Aug 14)
 --------------------
 

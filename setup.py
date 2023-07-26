@@ -14,7 +14,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        "Django>=2.2",
+        "Django>=3.2",
         "django-appconf>=1.0",
     ],
     license="BSD",
@@ -32,6 +32,7 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
     ],
     project_urls={
         "Source": "https://github.com/zyegfryed/django-statici18n",
