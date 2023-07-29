@@ -1,12 +1,12 @@
 Changelog
 =========
 
-Unreleased
+v2.4.0 (2023 Jul 29)
 --------------------
 
-* Add support for Django 4.1 & 4.2
-* Add support for Python 3.11
-* Drop support for Django 4.0
+* Add support for Django 4.1 & 4.2 (thanks @irtazaakram)
+* Add support for Python 3.11 (thanks @irtazaakram)
+* Drop support for Django 4.0 (thanks @irtazaakram)
 
 v2.3.1 (2022 Aug 14)
 --------------------
