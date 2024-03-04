@@ -3,10 +3,17 @@ import pytest
 from statici18n import utils
 
 
-@pytest.mark.parametrize("locale", ["en", "zh-hans", "ko-KR"])
+@pytest.mark.parametrize("locale", ["en", "zh-Hans", "ko-KR"])
 def test_default_filename(locale):
     filename = utils.get_filename(locale, "djangojs")
     assert filename == "%s/djangojs.js" % locale
+
+
+@pytest.mark.parametrize("locale", ["en", "en-gb"])
+def test_default_filename_coerce_locale(settings, locale):
+    settings.LANGUAGES = [("en", "English")]
+
+    assert utils.default_filename(locale, "django") == "en/django.js"
 
 
 @pytest.mark.parametrize("fmt", ["js", "json", "yaml"])
