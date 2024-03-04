@@ -105,7 +105,13 @@ class Command(BaseCommand):
     def _create_output(
         self, outputdir, outputformat, locale, domain, packages, namespace
     ):
-        outputfile = os.path.join(outputdir, get_filename(locale, domain, outputformat))
+        try:
+            filename = get_filename(locale, domain, outputformat)
+        except LookupError:
+            # Silence error for backward-compatibility
+            return ""
+
+        outputfile = os.path.join(outputdir, filename)
         basedir = os.path.dirname(outputfile)
         if not os.path.isdir(basedir):
             os.makedirs(basedir)
