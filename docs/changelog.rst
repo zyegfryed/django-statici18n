@@ -1,6 +1,27 @@
 Changelog
 =========
 
+v2.5.0 (2024 Apr 20)
+--------------------
+
+* Add support for Django 5.0
+* Add support for Python 3.12
+
+.. warning::
+
+   The following changes are backward-incompatible with the previous release.
+
+* Coerce language code on filename lookup (thanks @nerdoc)
+
+.. note::
+
+    The default filename from django-static18n is now made upon the
+    language code found in ``settings.LANGUAGES``. This aligns with
+    Django's behavior.
+
+    Upon upgrading, re-generate and deploy your Javascript catalogs to ensure
+    they come with the correct language code-based names.
+
 v2.4.0 (2023 Jul 29)
 --------------------
 
