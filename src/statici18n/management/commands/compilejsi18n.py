@@ -138,18 +138,18 @@ class Command(BaseCommand):
         verbosity = int(options.get("verbosity"))
 
         if locale is not None:
-            languages = [locale]
+            locales = [locale]
         elif not settings.USE_I18N:
-            languages = [settings.LANGUAGE_CODE]
+            locales = [settings.LANGUAGE_CODE]
         else:
-            languages = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
+            locales = [lang_code for (lang_code, lang_name) in settings.LANGUAGES]
 
         if outputdir is None:
             outputdir = os.path.join(
                 settings.STATICI18N_ROOT, settings.STATICI18N_OUTPUT_DIR
             )
 
-        for locale in languages:
+        for locale in locales:
             if verbosity > 0:
                 self.stdout.write("processing language %s\n" % locale)
 

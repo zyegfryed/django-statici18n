@@ -17,7 +17,7 @@ def get_mod_func(callback):
         dot = callback.rindex(".")
     except ValueError:
         return callback, ""
-    return callback[:dot], callback[dot + 1:]
+    return callback[:dot], callback[dot + 1 :]
 
 
 def get_filename(*args, **kwargs):
@@ -33,7 +33,8 @@ def get_filename(*args, **kwargs):
 
 
 def default_filename(locale, domain, output_format="js"):
-    language_code = get_supported_language_variant(locale)
+    language_code = to_language(locale)
+    language_code = get_supported_language_variant(language_code)
     return os.path.join(language_code, "%s.%s" % (domain, output_format))
 
 
