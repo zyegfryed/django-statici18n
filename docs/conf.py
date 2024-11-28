@@ -23,7 +23,7 @@ copyright = "2012-2024, Sébastien Fievet"
 author = "Sébastien Fievet"
 
 # The full version, including alpha/beta/rc tags
-release = "2.5.0"
+release = "2.6.0"
 
 
 # -- General configuration ---------------------------------------------------

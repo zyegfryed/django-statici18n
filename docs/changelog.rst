@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v2.6.0 (@024 Nov 28)
+--------------------
+
+* Add support for Django 5.1
+* Drop support for Django 3.2
+* Drop support for Django 4.1
+* Use Python 3.12 as default Python version
+* Fix inconsistency with locale when compiling catalogs (thanks @chnmasta05)
+
 v2.5.0 (2024 Apr 20)
 --------------------
 
