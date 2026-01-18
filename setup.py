@@ -14,7 +14,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        "Django>=4.2,<6",
+        "Django>=4.2,<6.1",
         "django-appconf>=1.0",
     ],
     license="BSD",
@@ -24,6 +24,7 @@ setup(
         "Framework :: Django",
         "Framework :: Django :: 4.2",
         "Framework :: Django :: 5.2",
+        "Framework :: Django :: 6.0",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
