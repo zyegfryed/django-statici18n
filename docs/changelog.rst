@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Unreleased
+----------
+
+* Add support for Django 5.2
+
 v2.6.0 (@024 Nov 28)
 --------------------
 
