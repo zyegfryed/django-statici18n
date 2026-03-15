@@ -2,9 +2,9 @@ from setuptools import setup, find_packages
 
 setup(
     name="django-statici18n",
-    version="2.6.0",
+    version="2.7.0",
     author="Sebastien Fievet",
-    author_email="zyegfryed@gmail.com",
+    author_email="_@sebastien-fievet.net",
     url="http://django-statici18n.readthedocs.org/",
     description=("A Django app that compiles i18n JavaScript catalogs "
                  "to static files."),

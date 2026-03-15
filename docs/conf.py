@@ -19,11 +19,11 @@ sys.path.insert(0, os.path.abspath("_ext"))
 # -- Project information -----------------------------------------------------
 
 project = "django-statici18n"
-copyright = "2012-2024, Sébastien Fievet"
+copyright = "2012-2026, Sébastien Fievet"
 author = "Sébastien Fievet"
 
 # The full version, including alpha/beta/rc tags
-release = "2.6.0"
+release = "2.7.0"
 
 
 # -- General configuration ---------------------------------------------------
