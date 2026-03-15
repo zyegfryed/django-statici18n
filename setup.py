@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="django-statici18n",
-    version="2.7.0",
+    version="2.7.1",
     author="Sebastien Fievet",
     author_email="_@sebastien-fievet.net",
     url="http://django-statici18n.readthedocs.org/",

@@ -4,6 +4,11 @@ Changelog
 Unreleased
 ----------
 
+v2.7.1 (2026 Mar 15)
+--------------------
+
+* Align GitHub workflow Python versions with supported ones
+
 v2.7.0 (2026 Mar 15)
 --------------------
 
