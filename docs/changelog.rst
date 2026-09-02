@@ -4,6 +4,10 @@ Changelog
 Unreleased
 ----------
 
+
+v2.8.0 (2026 Sep 02)
+--------------------
+
 * Add support for Django 6.1 (thanks @federicobond)
 * Drop support for Django 4.2
 * Drop support for Python 3.9
