@@ -4,7 +4,10 @@ Changelog
 Unreleased
 ----------
 
-* Add support for Django 6.1
+* Add support for Django 6.1 (thanks @federicobond)
+* Drop support for Django 4.2
+* Drop support for Python 3.9
+* Drop support for Python 3.8
 
 v2.7.1 (2026 Mar 15)
 --------------------
